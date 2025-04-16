@@ -22,6 +22,8 @@ export default {
       'black': '#000000'
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
 }
 

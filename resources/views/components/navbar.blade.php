@@ -1,28 +1,42 @@
-<div class="h-14 flex gap-3 p-4 sticky top-0 bg-white  z-50">
+<div class="h-14 flex gap-1 p-4 sticky top-0 bg-white  z-50 font-light">
     <div>
-        <a class="font-semibold  cursor-pointer" href="/"><strong>RestoKu</strong></a>
+        <a class=" cursor-pointer" href="/"><strong>Warung Kita</strong></a>
     </div>
-    <div class="flex grow flex-row-reverse gap-5">
-        <div class="flex gap-10 mr-14   ">
-            <a class="hover:underline cursor-pointer" href="/riwayat"><strong>Riwayat</strong></a>
+    <div class="flex grow flex-row-reverse gap-3">
+        <div class="flex gap-10 mr-14 ">
             <a class="hover:underline cursor-pointer" href="/"><strong>Home</strong></a>
             <a class="hover:underline cursor-pointer" href="/menu"><strong>Menu</strong></a>
-            <a class="hover:underline cursor-pointer" href="/cart"><strong class="flex">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-                  </svg>
-                  @if (Auth::check())
-                    {{$keranjang}}
-                  @endif
-            </strong></a>
-            <a class="hover:underline cursor-pointer" href="/#about"><strong>About Us</strong></a>
+            @if (!Auth::check())
+                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                    class="normal-case text-black bg-blue-900 hover:bg-blue-50 transition duration-300  rounded-sm py-1 px-5 text-white inline-flex items-center"
+                    type="button">{{ 1 }} <svg class="w-2.5 h-2.5 ms-3"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div id="dropdown"
+                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                        <li>
+                            <a href="/profile"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
+                        </li>
+                        <li>
+                            <a href="/logout"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
+                                out</a>
+                        </li>
+                    </ul>
+                </div>
+            @else
+                <a href="/login"
+                    class=" text-black bg-blue-900 hover:bg-blue-50 transition duration-300  rounded-sm py-1 px-5 text-white">Login</a>
+            @endif
+
         </div>
     </div>
-
-    @if (Auth::check())
-        <a class="hover:underline cursor-pointer " href="/signout"><strong class="upercase">{{Auth::user()['nama_222118']}}</strong></a>
-    @else
-        <a class="hover:underline cursor-pointer" href="/login"><strong>LOGIN</strong></a>
-    @endif
 
 </div>
