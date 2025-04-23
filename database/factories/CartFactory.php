@@ -21,13 +21,13 @@ class CartFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_menu_222118' => Menu::factory(),
-            'id_user_222118' => User::factory(),
-            'kode_222118' => fake()->word(),
-            'status_222118' => 'belum',
-            'jumlah_222118' => fake()->randomElement([15000, 23000, 7000, 6000, 12000]),
-            'total_222118' => fake()->randomElement([15000, 23000, 7000, 6000, 12000, 67000]),
-            'tanggal_222118' => fake()->dateTimeBetween('2024-01-01', '2024-12-31')
+            '222339_id_menu' => Menu::factory(),
+            '222339_id_user' => User::factory(),
+            '222339_kode' => fake()->word(),
+            '222339_status' => 'belum',
+            '222339_jumlah' => fake()->randomElement([15000, 23000, 7000, 6000, 12000]),
+            '222339_total' => fake()->randomElement([15000, 23000, 7000, 6000, 12000, 67000]),
+            '222339_tanggal' => fake()->dateTimeBetween('2024-01-01', '2024-12-31')
         ];
     }
 }

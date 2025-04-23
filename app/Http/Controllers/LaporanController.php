@@ -17,8 +17,8 @@ class LaporanController extends Controller
          $datas = [
             'pelanggan' => User::count(),
             'menu' => Menu::count(),
-            'pesanan_selesai' => Cart::where('status_222118', 'selesai')->count(),
-            'pesanan_belum' => Cart::where('status_222118', 'belum')->count(),
+            'pesanan_selesai' => Cart::where('222339_status', 'selesai')->count(),
+            'pesanan_belum' => Cart::where('222339_status', 'belum')->count(),
             'order' => Cart::all(),
         ];
         return view('admin.laporan.index', compact('datas'));

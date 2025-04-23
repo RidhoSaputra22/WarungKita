@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pesanan_222118', function (Blueprint $table) {
-            $table->id("id_pesanan_222118");
-            $table->unsignedBigInteger("id_driver_222118");
-            $table->string("kode_222118");
-            $table->string("konfirmasi_pelanggan_222118");
-            $table->string("konfirmasi_driver_222118");
-            $table->text("foto_konfirmasi_222118");
+        Schema::create('pesanan_222339', function (Blueprint $table) {
+            $table->id("222339_id_pesanan");
+            $table->unsignedBigInteger("222339_id_driver");
+            $table->string("222339_kode");
+            $table->string("222339_konfirmasi_pelanggan");
+            $table->string("222339_konfirmasi_driver");
+            $table->text("222339_foto_konfirmasi");
             $table->timestamps();
 
 
-            $table->foreign('id_driver_222118')->references('id_user_222118')->on('users_222118')->onDelete('cascade');
-            $table->foreign('kode_222118')->references('kode_222118')->on('carts_222118')->onDelete('cascade');
+            $table->foreign('222339_id_driver')->references('222339_id_user')->on('users_222339')->onDelete('cascade');
+            $table->foreign('222339_kode')->references('222339_kode')->on('carts_222339')->onDelete('cascade');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pesanan');
+        Schema::dropIfExists('pesanan_222339');
     }
 };

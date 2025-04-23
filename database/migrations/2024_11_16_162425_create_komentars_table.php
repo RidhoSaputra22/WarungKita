@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('komentars_222118', function (Blueprint $table) {
-            $table->id('222118_id_komentar');
-            $table->unsignedBigInteger('222118_id_user');
-            $table->unsignedBigInteger('222118_id_menu');
-            $table->text('222118_komentar');
+        Schema::create('komentars_222339', function (Blueprint $table) {
+            $table->id('222339_id_komentar');
+            $table->unsignedBigInteger('222339_id_user');
+            $table->unsignedBigInteger('222339_id_menu');
+            $table->text('222339_komentar');
             $table->timestamps();
 
-            $table->foreign('222118_id_menu')->references('222118_id_menu')->on('menus_222118')->onDelete('cascade');
-            $table->foreign('222118_id_user')->references('id_user_222118')->on('users_222118')->onDelete('cascade');
+            $table->foreign('222339_id_menu')->references('222339_id_menu')->on('menus_222339')->onDelete('cascade');
+            $table->foreign('222339_id_user')->references('222339_id_user')->on('users_222339')->onDelete('cascade');
 
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('komentars');
+        Schema::dropIfExists('komentars_222339');
     }
 };

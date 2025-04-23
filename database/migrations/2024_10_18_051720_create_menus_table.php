@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menus_222118', function (Blueprint $table) {
-            $table->id('222118_id_menu');
-            $table->unsignedBigInteger('222118_id_kategori');
-            $table->string('222118_nama');
-            $table->string('222118_deskripsi')->nullable();
-            $table->string('222118_harga');
-            $table->integer('222118_stok');
-            $table->string('222118_foto');
+        Schema::create('menus_222339', function (Blueprint $table) {
+            $table->id('222339_id_menu');
+            $table->unsignedBigInteger('222339_id_kategori');
+            $table->string('222339_nama');
+            $table->string('222339_deskripsi')->nullable();
+            $table->string('222339_harga');
+            $table->integer('222339_stok');
+            $table->string('222339_foto');
             $table->timestamps();
 
-            $table->foreign('222118_id_kategori')->references('222118_id_kategori')->on('categories_222118')->onDelete('cascade');
+            $table->foreign('222339_id_kategori')->references('222339_id_kategori')->on('categories_222339')->onDelete('cascade');
 
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('menus_222118');
+        Schema::dropIfExists('menus_222339');
     }
 };

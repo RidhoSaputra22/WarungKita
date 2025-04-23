@@ -21,7 +21,7 @@
                 <ul class="flex flex-col gap-3 font-semibold">
                     @foreach ($kategori as $data )
 
-                        <a href="?kategori={{ $data['222118_id_kategori']}}">{{ $data['kategori'] }}</a>
+                        <a href="?kategori={{ $data['222339_id_kategori']}}">{{ $data['kategori'] }}</a>
 
                     @endforeach
 
@@ -34,7 +34,7 @@
             </form>
             <div class="grid grid-cols-3 h-96 gap-2 m-14 w-full h-full  ">
                     @forelse ($datas as $data)
-                        <x-card id="{{$data['222118_id_menu']}}" nama="{{$data['222118_nama']}}" harga="{{$data['222118_harga']}}" image="{{$data['222118_foto']}}"></x-card>
+                        <x-card id="{{$data['222339_id_menu']}}" nama="{{$data['222339_nama']}}" harga="{{$data['222339_harga']}}" image="{{$data['222339_foto']}}"></x-card>
 
                     @empty
                         <h1>Tak ada data</h1>

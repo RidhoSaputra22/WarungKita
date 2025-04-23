@@ -1,15 +1,15 @@
-<div class="h-14 flex gap-1 p-4 sticky top-0 bg-white  z-50 font-light">
+<div class=" h-14 flex gap-1 p-4 px-14 font-light shadow-xl opacity-90 backdrop-blur-[0%]  text-white">
     <div>
         <a class=" cursor-pointer" href="/"><strong>Warung Kita</strong></a>
     </div>
     <div class="flex grow flex-row-reverse gap-3">
-        <div class="flex gap-10 mr-14 ">
+        <div class="flex gap-10  ">
             <a class="hover:underline cursor-pointer" href="/"><strong>Home</strong></a>
             <a class="hover:underline cursor-pointer" href="/menu"><strong>Menu</strong></a>
-            @if (!Auth::check())
+            @if (Auth::check())
                 <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
                     class="normal-case text-black bg-blue-900 hover:bg-blue-50 transition duration-300  rounded-sm py-1 px-5 text-white inline-flex items-center"
-                    type="button">{{ 1 }} <svg class="w-2.5 h-2.5 ms-3"
+                    type="button">{{ ucfirst(Auth::user()['nama_212396']) }} <svg class="w-2.5 h-2.5 ms-3"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
@@ -32,8 +32,8 @@
                     </ul>
                 </div>
             @else
-                <a href="/login"
-                    class=" text-black bg-blue-900 hover:bg-blue-50 transition duration-300  rounded-sm py-1 px-5 text-white">Login</a>
+                <a href="/login" class=""><span
+                        class="rounded-sm bg-red-800 transition duration-300 py-1 px-5 text-white">Login</span></a>
             @endif
 
         </div>

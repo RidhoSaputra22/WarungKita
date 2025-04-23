@@ -27,7 +27,7 @@ class CustomAuthController extends Controller
 
 
         $credentials = [
-            'username_222118' => $request->username,
+            '222339_username' => $request->username,
             'password' => $request->password
         ];
 
@@ -36,14 +36,14 @@ class CustomAuthController extends Controller
         if(Auth::attempt($credentials)){
             $user = Auth::user();
             $request->session()->put('current_user', Auth::user());
-            // dd($user['role_222118']);
+            // dd($user['222339_role']);
 
-            if($user['role_222118'] === "admin"){
+            if($user['222339_role'] === "admin"){
                 return redirect('admin/laporan');
 
             }
 
-            if($user['role_222118'] === "user"){
+            if($user['222339_role'] === "user"){
                 return redirect('/');
             }
 
@@ -82,13 +82,13 @@ class CustomAuthController extends Controller
     public function create(array $data)
     {
       return User::create([
-        'nama_222118' => $data['nama'],
-        'alamat_222118' => $data['alamat'],
-        'hp_222118' => $data['hp'],
-        'role_222118' => 'user',
+        '222339_nama' => $data['nama'],
+        '222339_alamat' => $data['alamat'],
+        '222339_hp' => $data['hp'],
+        '222339_role' => 'user',
 
-        'username_222118' => $data['username'],
-        'password_222118' => Hash::make($data['password']),
+        '222339_username' => $data['username'],
+        '222339_password' => Hash::make($data['password']),
 
 
       ]);
@@ -98,7 +98,7 @@ class CustomAuthController extends Controller
     {
         if(Auth::check()){
             // Debug: Log successful dashboard access
-            \Log::info('User accessed dashboard: ' . Auth::user()->username_222118);
+            // \Log::info('User accessed dashboard: ' . Auth::user()->222339_username);
             return view('pemasukan.index');
         }
 

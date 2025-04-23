@@ -21,7 +21,7 @@
                 <h1 class=" text-sm">Kategori</h1>
                 <select name="kategori" id="" class="w-full px-2 py-3 border">
                     @foreach ($kategori as $k )
-                        <option value="{{$k['222118_id_kategori']}}">{{ $k['kategori'] }}</option>
+                        <option value="{{$k['222339_id_kategori']}}">{{ $k['kategori'] }}</option>
                     @endforeach
                 </select>
             </div>

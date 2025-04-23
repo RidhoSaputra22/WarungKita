@@ -24,12 +24,12 @@
 
                     <tr class=" border text-black">
                         <th scope="row" class="px-6 py-4  ">
-                            {{ $data['kategori'] }}
+                            {{ $data['222339_kategori'] }}
                         </th>
                         <td class="px-6 py-4 text-right">
-                            <a href="{{ route('kategori.show', $data['222118_id_kategori']) }}"
+                            <a href="{{ route('kategori.show', $data['222339_id_kategori']) }}"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
-                            <form method="POST" action="{{ route('kategori.destroy', $data['222118_id_kategori']) }}">
+                            <form method="POST" action="{{ route('kategori.destroy', $data['222339_id_kategori']) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button>Hapus</button>

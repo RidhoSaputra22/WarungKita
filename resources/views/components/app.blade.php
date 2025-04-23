@@ -10,7 +10,7 @@
 
     <style>
     * {
-        /* outline: 1px solid red; */
+        outline: 1px solid red;
     }
 
     @media print{
@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="bg-white">
+<body>
     {{$slot}}
 
 </body>

@@ -19,9 +19,9 @@ class KomentarFactory extends Factory
     public function definition(): array
     {
         return [
-            '222118_id_user' => User::factory(),
-            '222118_id_menu' => 1,
-            '222118_komentar' => fake()->sentence(),
+            '222339_id_user' => User::factory(),
+            '222339_id_menu' => 1,
+            '222339_komentar' => fake()->sentence(),
         ];
     }
 }

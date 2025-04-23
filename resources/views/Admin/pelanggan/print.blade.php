@@ -105,14 +105,14 @@
 
                     <tr class=" border text-black">
                         <th scope="row" class="px-6 py-4  ">
-                            {{ $data['nama_222118'] }}
+                            {{ $data['222339_nama'] }}
                         </th>
                         <td class="px-6 py-4">
-                            {{ $data['alamat_222118'] }}
+                            {{ $data['222339_alamat'] }}
 
                         </td>
                         <td class="px-6 py-4">
-                            {{ $data['hp_222118'] }}
+                            {{ $data['222339_hp'] }}
                         </td>
                         <td class="px-6 py-4">
                             {{ $data['created_at'] }}

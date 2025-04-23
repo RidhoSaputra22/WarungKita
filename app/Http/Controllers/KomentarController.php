@@ -38,9 +38,9 @@ class KomentarController extends Controller
 
 
         Komentar::create([
-            '222118_komentar' => $request->komentar,
-            '222118_id_menu' => $request->menu,
-            '222118_id_user' => Auth::user()['id_user_222118']
+            '222339_komentar' => $request->komentar,
+            '222339_id_menu' => $request->menu,
+            '222339_id_user' => Auth::user()['222339_id_user']
         ]);
 
         return redirect()->back();
@@ -73,7 +73,7 @@ class KomentarController extends Controller
 
 
         Komentar::findOrFail($id)->update([
-            '222118_komentar' => $request->komentar,
+            '222339_komentar' => $request->komentar,
         ]);
 
         return redirect()->back();

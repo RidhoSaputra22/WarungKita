@@ -38,10 +38,10 @@ class PelangganController extends Controller
         }
 
         User::create([
-            'nama_222118' => $request->name,
-            'alamat_222118' => $request->email,
-            'hp_222118' => $request->phone,
-            'foto_222118' => $request->foto,
+            '222339_nama' => $request->name,
+            '222339_alamat' => $request->email,
+            '222339_hp' => $request->phone,
+            '222339_foto' => $request->foto,
         ]);
 
         return redirect()->route('pelanggans.index')->with('success', 'Customer created successfully!');

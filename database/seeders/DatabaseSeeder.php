@@ -24,24 +24,24 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(1)->create([
-            'nama_222118' => 'user',
-            'alamat_222118' => 'user',
-            'foto_222118' => 'image/user/user.webp',
-            'hp_222118' => 'user',
-            'role_222118' => 'user',
-            'username_222118' => 'user',
-            'password_222118' => Hash::make('user'),
+            '222339_nama' => 'user',
+            '222339_alamat' => 'user',
+            '222339_foto' => 'image/user/user.webp',
+            '222339_hp' => 'user',
+            '222339_role' => 'user',
+            '222339_username' => 'user',
+            '222339_password' => Hash::make('user'),
 
         ]);
 
         User::factory(1)->create([
-            'nama_222118' => 'admin',
-            'alamat_222118' => 'admin',
-            'hp_222118' => 'admin',
-            'foto_222118' => 'image/user/user.webp',
-            'role_222118' => 'admin',
-            'username_222118' => 'admin',
-            'password_222118' => Hash::make('admin'),
+            '222339_nama' => 'admin',
+            '222339_alamat' => 'admin',
+            '222339_hp' => 'admin',
+            '222339_foto' => 'image/user/user.webp',
+            '222339_role' => 'admin',
+            '222339_username' => 'admin',
+            '222339_password' => Hash::make('admin'),
 
         ]);
 

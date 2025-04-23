@@ -113,13 +113,13 @@
 
                     <tr class=" border text-black">
                         <th scope="row" class="px-6 py-4  ">
-                            {{ $data['222118_nama'] }}
+                            {{ $data['222339_nama'] }}
                         </th>
                         <td class="px-6 py-4">
-                            {{ $data['222118_harga'] }}
+                            {{ $data['222339_harga'] }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $data['222118_stok'] }}
+                            {{ $data['222339_stok'] }}
                         </td>
                         <td class="px-6 py-4">
                             <p class="px-3 py-1 ">

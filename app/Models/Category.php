@@ -9,16 +9,16 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $table = "categories_222118";
-    protected $primaryKey = "222118_id_kategori";
+    protected $table = "categories_222339";
+    protected $primaryKey = "222339_id_kategori";
 
     protected $fillable = [
-        'kategori'
+        '222339_kategori'
     ];
 
 
     public function menu() {
-        return $this->hasMany(Menu::class, '222118_id_kategori');
+        return $this->hasMany(Menu::class, '222339_id_kategori');
     }
 
 }

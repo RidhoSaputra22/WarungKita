@@ -80,7 +80,7 @@
 
                     <tr class=" border text-black">
                         <th scope="row" class="px-6 py-4  ">
-                            {{ $data['kategori'] }}
+                            {{ $data['222339_kategori'] }}
                         </th>
                         <th scope="row" class="px-6 py-4  ">
                             {{ $data['created_at'] }}

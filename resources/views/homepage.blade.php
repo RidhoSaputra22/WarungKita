@@ -1,56 +1,54 @@
 <x-app>
-    <x-navbar></x-navbar>
-
-
-    <div class="h-screen flex items-center w-full bg-no-repeat bg-cover "
-        style="background-image: url('{{ URL::asset('image/awal.jpg') }}')">
-
-        <div
-            class="h-full w-full backdrop-brightness-50 text-white flex flex-col text-center bg-center justify-center items-center">
-            <h1 class="text-9xl font-semibold">RestoKu</h1>
-            <p class="text-2xl font-regural italic">Silahkan memilih</p>
-            <a href="#produk-unggulan" class="border px-4 py-2 mt-3 ">Menu Unggulan</a>
-        </div>
-    </div>
-
-
-
-    <section id="about" class="h-auto pt-24 bg-contain">
-        <div class="mx-10">
-            <p class="text-4xl font-semibold flex justify-center pb-24 bg-white">Apa itu RestoKu</p>
+    <div class="h-screen w-full bg-no-repeat bg-cover bg-center"
+        style="background-image: url('{{ URL::asset('image/banner.jpg') }}')">
+        <div class="h-full w-full backdrop-brightness-[36%] text-white ">
+            <x-navbar></x-navbar>
             <div class="flex">
-                <div class="h-96 aspect-square bg-no-repeat bg-cover py-3   "
-                    style="background-image: url('{{URL::asset('image/bbbbb.webp')}}');">
+                <div class="py-36 px-24 w-full flex flex-col gap-6">
+                    <span class="text-8xl font-semibold ">Warung Kita</span>
+                    <p class="text-lg font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
+                        eius, vero dolorem deleniti fugiat autem eligendi eum natus ullam at. Lorem ipsum dolor sit amet
+                        consectetur adipisicing elit. Optio, ea. Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Aspernatur, odio! Lorem ipsum dolor sit amet</p>
+                    <div class="flex gap-5 pt-2">
+                        <a href="#produk-unggulan"><span class="rounded-sm px-4 py-2 mt-3 bg-red-800 ">Pesan
+                                Sekarang</span></a>
+                        <a href="#produk-unggulan"><span class="rounded-sm border px-4 py-2 mt-3 ">Lihat Menu</span></a>
+                    </div>
                 </div>
-                <div class="px-10 w-full bg-white">
-                    <h1 class="text-4xl font-semibold">RestoKu</h1>
-                    <p class="text-lg mt-4"><strong>RestoKu</strong> adalah sebuah website yang menawarkan pengalaman kuliner
-                        dengan cita rasa khas indonesia yang berkualitas. Dengan suasana yang nyaman dan modern,
-                        <strong>RestoKu</strong> menawarkan beragam pilihan menu yang dibuat untuk memuaskan berbagai
-                        selera, mulai dari hidangan tradisional hingga kreasi fusion yang inovatif dan juga sesuai lidah orag indonesia. Setiap hidangan
-                        disiapkan dengan bahan-bahan segar yang berkualitas dan teknik masak yang hati-hati untuk menjaga rasa dan
-                        kualitas.
-                    </p>
-                    <p class="text-lg mt-4"><strong>RestoKu</strong> juga berkomitmen untuk memberikan pelayanan terbaik
-                        kepada setiap pelanggan, menciptakan suasana yang ramah dan hangat, cocok untuk makan bersama
-                        keluarga, teman, atau acara spesial. Apapun selera dan preferensimu, <strong>RestoKu</strong>
-                        adalah tempat yang tepat untuk menikmati makanan lezat dan pengalaman bersantap yang tak
-                        terlupakan.</p>
-
+                <div class="w-1/2">
 
                 </div>
             </div>
         </div>
-        <section id="produk-unggulan" class="h-screen mx-24 ">
-            <div class="pt-24">
+
+    </div>
+    <section id="about" class="px-24 h-auto bg-gray-100">
+        <section id="produk-unggulan" class="h-screen">
+            <div class="pt-14">
                 <p class="text-4xl font-semibold flex justify-center py-14">Menu Unggulan</p>
             </div>
-            <div class="flex justify-center">
+            <div class="flex ">
                 <div class=" h-96">
-                    <div class="grid grid-cols-4 h-96 gap-14">
+                    <div class="flex h-96 gap-14">
                         @foreach ($datas as $data)
-                        <x-card id="{{$data['222118_id_menu']}}" nama="{{$data['222118_nama']}}" harga="{{$data['222118_harga']}}" image="{{$data['222118_foto']}}"></x-card>
-
+                            {{-- <a href="/detail/{{ $data->getId() }}" class="">
+                                <div class="  shadow-lg w-full h-90 bg-bottom bg-cover bg-no-repeat  rounded flex flex-col justify-end "
+                                    style="background-image: url('{{ Storage::url($data->getThumbnail()) }}');">
+                                    <div class="h-40 rounded-t-xl rounded-b bg-white p-3 flex flex-col">
+                                        <div class="flex items-center">
+                                            <div class="flex text-yellow-400">
+                                                {{ str_repeat('⭐', $data->getRating()) }}
+                                            </div>
+                                            <span class="text-gray-600 ml-2">{{ $data->getRating() / 5 }}</span>
+                                        </div>
+                                        <span class="text-lg font-semibold">{{ $data->getNama() }}</span>
+                                        <span
+                                            class="text-sm font-light">{{ Str::limit($data->getDeskripsi(), 70) }}</span>
+                                        <span class="text-lg">Rp. {{ number_format($data->getHarga()) }}</span>
+                                    </div>
+                                </div>
+                            </a> --}}
                         @endforeach
                     </div>
                     <div class="mt-14">
@@ -83,8 +81,10 @@
         <div class="w-full text-white  m-32">
             <h1 class="text-8xl font-semibold">Temukan Berbagai Macam Pilihan di RestoKu!</h1>
             <p class="text-lg mt-4">
-                Di <strong>RestoKu</strong>, kami bangga menyajikan berbagai macam menu yang lezat dan bervariasi, cocok
-                untuk segala selera. Mulai dari hidangan tradisional yang otentik hingga kreasi modern yang inovatif,
+                Di <strong>RestoKu</strong>, kami bangga menyajikan berbagai macam menu yang lezat dan bervariasi,
+                cocok
+                untuk segala selera. Mulai dari hidangan tradisional yang otentik hingga kreasi modern yang
+                inovatif,
                 setiap sajian dibuat dengan bahan-bahan berkualitas dan segar.
             </p>
             <div class="mt-5">
@@ -112,7 +112,8 @@
                         </div>
                     </div>
                     <div class="text-center mx-3">
-                        <p><strong>RestoKu</strong> benar-benar memenuhi ekspektasi saya. Rasa makanannya enak banget,
+                        <p><strong>RestoKu</strong> benar-benar memenuhi ekspektasi saya. Rasa makanannya enak
+                            banget,
                             dan yang paling penting harganya sangat terjangkau. Favorit saya adalah nasi gorengnya,
                             porsi besar dengan harga yang ramah di kantong!</p>
                     </div>
@@ -140,7 +141,8 @@
                         </div>
                     </div>
                     <div class="text-center mx-3">
-                        <p>Suka banget sama suasana di <strong>RestoKu</strong>. Tempatnya cozy, cocok buat makan bareng
+                        <p>Suka banget sama suasana di <strong>RestoKu</strong>. Tempatnya cozy, cocok buat makan
+                            bareng
                             teman atau keluarga. Ditambah lagi, makanannya enak dan variatif, rasanya pas di lidah!
                     </div>
                 </div>
@@ -148,5 +150,4 @@
         </div>
     </section>
     <x-footter></x-footter>
-
 </x-app>

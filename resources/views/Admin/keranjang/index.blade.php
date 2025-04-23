@@ -42,19 +42,19 @@
 
                     <tr class=" border text-black">
                         <th scope="row" class="px-6 py-4  ">
-                            {{ $data['nama_222118'] }}
+                            {{ $data['222339_nama'] }}
                         </th>
                         <td class="px-6 py-4">
-                            {{ $data['alamat_222118'] }}
+                            {{ $data['222339_alamat'] }}
 
                         </td>
                         <td class="px-6 py-4">
-                            {{ $data['hp_222118'] }}
+                            {{ $data['222339_hp'] }}
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <a href="{{ route('pelanggan.show', $data['id_user_222118']) }}"
+                            <a href="{{ route('pelanggan.show', $data['222339_id_user']) }}"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
-                            <form method="POST" action="{{ route('pelanggan.destroy', $data['id_user_222118']) }}">
+                            <form method="POST" action="{{ route('pelanggan.destroy', $data['222339_id_user']) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button>Hapus</button>
