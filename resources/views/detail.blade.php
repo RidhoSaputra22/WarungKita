@@ -1,40 +1,35 @@
 <x-app>
     <x-navbar></x-navbar>
-    <section id="about" class="min-h-screen pt-24 bg-contain">
-        <div class="mx-10">
-            <div class="flex">
-                <div class="h-96 w-1/2 bg-no-repeat bg-cover py-3  "
-                    style="background-image: url('{{ URL::asset($data['222339_foto']) }}');">
+    <section id="about" class="min-h-screen  lg:pt-24 bg-contain">
+        <div class="lg:mx-10">
+            <div class="flex lg:flex-row flex-col">
+                <div class="h-64 lg:h-96 w-full lg:w-1/2 bg-no-repeat bg-cover py-3 lg:rounded-xl"
+                    style=" background-image: url('{{ URL::asset($data['222339_foto']) }}'); ">
                 </div>
-                <div class="px-10 w-full bg-white">
+                <div class="px-5 lg:px-10 pt-8 lg:pt-0 w-full bg-white">
                     <h1 class="text-4xl font-semibold">{{ $data['222339_nama'] }}</h1>
-                    <p class="text-lg mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore amet quo sit
+                    <p class="text-sm text-justify text-gray-900 lg:text-lg mt-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore amet quo sit
                         in corporis dicta totam, iste et dolores vero mollitia aspernatur debitis hic praesentium
                         commodi earum ex quidem numquam odio id! Enim expedita sit possimus amet sed officia, dolores,
                         placeat suscipit maxime, nobis dolorum explicabo quisquam saepe a! Numquam!
                     </p>
-                    <p class="text-lg mt-4">Rp. {{ number_format($data['222339_harga']) }}</p>
+                    <p class="text-2xl mt-4">Rp. {{ number_format($data['222339_harga']) }}</p>
                     <p class="text-lg mt-4">Qty. {{ $data['222339_stok'] }}</p>
-
                     <div class="mt-5">
-
-                        <a href="/AddToCart/{{ $data['222339_id_menu'] }}" class="border px-4 py-2  ">Beli Sekarang</a>
+                        <a href="/AddToCart/{{ $data['222339_id_menu'] }}" class=" bg-red-900 text-white px-4 py-2  ">Beli Sekarang</a>
                     </div>
-
-
-
                 </div>
             </div>
         </div>
 
-        <section class="m-10    ">
+        <section class="mx-5 lg:mx-10 mt-10 ">
             <div>
                 <h1 class="text-2xl">Komentar</h1>
                 <hr>
             </div>
             @forelse ($komentarKu as $data)
                 <div class="flex mt-2 border-b-2">
-                    <div class="h-24 w-24 m-3 bg-center bg-cover bg-no-repeat rounded-circle"
+                    <div class="h-24 w-full m-3 bg-center bg-cover bg-no-repeat rounded-circle"
                         style="background-image: url('{{ URL::asset($data->user['foto_222339']) }}')"></div>
                     <form class="py-3 grow" action="{{ route('komentar.update', $data['222339_id_komentar']) }}"
                         method="POST">
@@ -89,7 +84,7 @@
                     </form>
                 </div>
             @empty
-                <h1>Tak ada data</h1>
+                <h1>Belum ada komentar</h1>
             @endforelse
 
 

@@ -33,9 +33,9 @@
                 <div class="mt-4 flex justify-end gap-3">
                     <a class="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50" href="/detail/{{ $data['222339_id_menu'] }}" >Detail</a>
                     @if ($data['222339_status'] == "sukses")
-                        <a class="px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700" href="/AddToCart/{{ $data['222339_id_menu'] }}">Beli Lagi</a>
+                        <a class="px-4 py-2 text-sm bg-red-900 text-white rounded-lg hover:bg-red-900" href="/AddToCart/{{ $data['222339_id_menu'] }}">Beli Lagi</a>
                     @else
-                        <a class="px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700" href="/cart">Checkout</a>
+                        <a class="px-4 py-2 text-sm bg-red-900 text-white rounded-lg hover:bg-red-900" href="/cart">Checkout</a>
 
                     @endif
                 </div>
