@@ -18,8 +18,7 @@ return new class extends Migration
             $table->text('222339_komentar');
             $table->timestamps();
 
-            $table->foreign('222339_id_menu')->references('222339_id_menu')->on('menus_222339')->onDelete('cascade');
-            $table->foreign('222339_id_user')->references('222339_id_user')->on('users_222339')->onDelete('cascade');
+
 
         });
     }

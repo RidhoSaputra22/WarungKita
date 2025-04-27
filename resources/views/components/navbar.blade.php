@@ -18,7 +18,7 @@
 
                 <!-- Dropdown menu -->
                 <div id="dropdown"
-                    class="z-10 hidden   divide-y divide-red-900 rounded-lg shadow-sm w-44 dark:bg-red-900">
+                    class="z-10 hidden divide-y divide-red-900 rounded-lg shadow-sm w-44 dark:bg-red-900">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                         <li>
                             <a href="/riwayat"

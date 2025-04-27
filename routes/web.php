@@ -39,11 +39,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/checkout/{id}', [HomeController::class, 'checkout']);
 });
 
-
-
 //Admin
-
-
 Route::resource('/admin/menu', MenuController::class);
 Route::resource('/admin/pelanggan', UserController::class);
 Route::resource('/admin/laporan', LaporanController::class);
@@ -57,10 +53,6 @@ Route::get('/print/laporan', [LaporanController::class, 'print']);
 Route::get('/print/kategori', [CategoryController::class, 'print']);
 Route::get('/print/order', [OrderController::class, 'print']);
 Route::get('/print/komentar', [KomentarController::class, 'print']);
-
-
-
-
 
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');

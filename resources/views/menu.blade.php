@@ -19,7 +19,6 @@
         <div class="w-64 h-full hidden lg:block">
             <div>
                 <h1 class="text-2xl md:text-4xl mb-4">Kategori</h1>
-                <hr>
             </div>
             <div class="p-3 mt-3">
                 <ul class="flex flex-col gap-3 font-semibold">
@@ -34,9 +33,9 @@
             <form class="h-auto bg-white flex justify-center mb-5 ">
                 <input type="text" name="search" class="p-2 w-full  rounded-l  border-red-900 border"
                     placeholder="Cari Menu...">
-                <button type="submit" class="p-2 bg-red-900 text-white rounded-r border-red-900 border">Cari</button>
+                <button type="submit" class="p-2 lg:px-14 bg-red-900 text-white rounded-r border-red-900 border">Cari</button>
             </form>
-            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 min-h-96 gap-5 ">
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 lg:m-10 lg:gap-10 min-h-96 gap-5 ">
                 @foreach ($datas as $data)
                     <a href="/detail/{{ $data['222339_id_menu'] }}" class="">
                         <div class="  shadow-lg w-full h-[300px] bg-bottom bg-cover bg-no-repeat  rounded flex flex-col justify-end rounded-xl"

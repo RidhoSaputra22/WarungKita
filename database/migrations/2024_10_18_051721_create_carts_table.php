@@ -22,9 +22,7 @@ return new class extends Migration
             $table->string('222339_tanggal');
             $table->timestamps();
 
-            // Add the foreign key constraint
-            $table->foreign('222339_id_menu')->references('222339_id_menu')->on('menus_222339')->onDelete('cascade');
-            $table->foreign('222339_id_user')->references('222339_id_user')->on('users_222339')->onDelete('cascade');
+
 
         });
     }
