@@ -24,13 +24,13 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            '222339_nama' => fake()->name(),
-            '222339_alamat' => fake()->address(),
-            '222339_hp' => fake()->phoneNumber(),
-            '222339_foto' => 'image/user/user.webp',
-            '222339_role' => 'admin',
-            '222339_username' => fake()->word(),
-            '222339_password' => Hash::make('admin')
+            'nama_222339' => fake()->name(),
+            'alamat_222339' => fake()->address(),
+            'hp_222339' => fake()->phoneNumber(),
+            'foto_222339' => 'image/user/user.webp',
+            'role_222339' => 'admin',
+            'username_222339' => fake()->word(),
+            'password_222339' => Hash::make('admin')
         ];
     }
 

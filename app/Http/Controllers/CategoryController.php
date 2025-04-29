@@ -63,7 +63,7 @@ class CategoryController
         ]);
 
         Category::create([
-            'kategori' => $request->kategori,
+            'kategori_222339' => $request->kategori,
         ]);
 
         return redirect()->route('kategori.index');

@@ -32,11 +32,11 @@ class MenuFactory extends Factory
         // }
 
         return [
-            '222339_nama' => fake()->name(),
-            '222339_harga' => fake()->numberBetween(1000, 100000),
-            '222339_foto' => 'image/nasilemak.jpeg',
-            '222339_stok' => 10,
-            '222339_id_kategori' => Category::factory(),
+            'nama_222339' => fake()->name(),
+            'harga_222339' => fake()->numberBetween(1000, 100000),
+            'foto_222339' => 'image/nasilemak.jpeg',
+            'stok_222339' => 10,
+            'id_kategori_222339' => Category::factory(),
             'created_at' => fake()->unique()->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = "Asia/Makassar"),
         ];
     }

@@ -9,7 +9,7 @@
             @if (Auth::check())
                 <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
                     class="normal-case bg-red-900 hover:bg-blue-50 transition duration-300  rounded-sm py-1 px-5 text-white inline-flex items-center"
-                    type="button">{{ ucfirst(Auth::user()['222339_nama']) }} <svg class="w-2.5 h-2.5 ms-3"
+                    type="button">{{ ucfirst(Auth::user()['nama_222339']) }} <svg class="w-2.5 h-2.5 ms-3"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />

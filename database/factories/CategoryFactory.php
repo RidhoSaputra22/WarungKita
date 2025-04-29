@@ -17,7 +17,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            '222339_kategori' => 'hell',
+            'kategori_222339' => 'hell',
         ];
     }
 }

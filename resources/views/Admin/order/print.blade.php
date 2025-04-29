@@ -91,25 +91,25 @@
 
                     <tr class="text-center border text-black">
                         <td class="px-6 py-4">
-                            {{ $data['222339_tanggal'] }}
+                            {{ $data['tanggal_222339'] }}
                         </td>
                         <th scope="row" class="px-6 py-4  ">
-                            {{ $data->pelanggan['222339_nama'] }}
+                            {{ $data->pelanggan['nama_222339'] }}
                         </th>
                         <th scope="row" class="px-6 py-4  ">
-                            {{ $data->menu['222339_nama'] }}
+                            {{ $data->menu['nama_222339'] }}
                         </th>
                         <th scope="row" class="px-6 py-4  ">
-                            {{ $data->menu['222339_harga'] }}
+                            {{ $data->menu['harga_222339'] }}
                         </th>
                         <th scope="row" class="px-6 py-4  ">
-                            {{ $data['222339_status'] }}
+                            {{ $data['status_222339'] }}
                         </th>
                         <th scope="row" class="px-6 py-4  ">
-                            {{ number_format($data['222339_jumlah']) }}
+                            {{ number_format($data['jumlah_222339']) }}
                         </th>
                         <th scope="row" class="px-6 py-4  ">
-                            Rp. {{ number_format($data['222339_total']) }}
+                            Rp. {{ number_format($data['total_222339']) }}
                         </th>
                     </tr>
                     @endforeach
@@ -121,8 +121,8 @@
                         <td></td>
                         <td></td>
                         <td class="text-right">Total Keseluruhan:</td>
-                        <td>{{ $datas->sum('222339_jumlah') }}</td>
-                        <td>Rp.{{ number_format($datas->sum('222339_total')) }}</td>
+                        <td>{{ $datas->sum('jumlah_222339') }}</td>
+                        <td>Rp.{{ number_format($datas->sum('total_222339')) }}</td>
                     </tr>
 
                 </tbody>

@@ -63,13 +63,13 @@
 
                     <tr class=" border text-black">
                         <th scope="row" class="px-6 py-4  ">
-                            {{ $data['222339_nama'] }}
+                            {{ $data['nama_222339'] }}
                         </th>
                         <td class="px-6 py-4">
-                            {{ $data['222339_harga'] }}
+                            {{ $data['harga_222339'] }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $data['222339_stok'] }}
+                            {{ $data['stok_222339'] }}
                         </td>
                         <td class="px-6 py-4">
                             <p class="px-3 py-1 bg-lime-400">
@@ -77,14 +77,14 @@
                             </p>
                         </td>
                         <td>
-                            <div class="h-24 w-24 bg-contain m-3" style="background-image: url('{{ URL::asset($data['222339_foto']) }}')">>
+                            <div class="h-24 w-24 bg-contain m-3" style="background-image: url('{{ URL::asset($data['foto_222339']) }}')">>
 
                             </div>
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <a href="{{ route('menu.show', $data['222339_id_menu']) }}"
+                            <a href="{{ route('menu.show', $data['id_menu_222339']) }}"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
-                            <form method="POST" action="{{ route('menu.destroy', $data['222339_id_menu']) }}">
+                            <form method="POST" action="{{ route('menu.destroy', $data['id_menu_222339']) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button>Hapus</button>

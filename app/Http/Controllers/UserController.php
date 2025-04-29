@@ -15,12 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $datas = User::where('222339_role', 'user')->get();
+        $datas = User::where('role_222339', 'user')->get();
         return view('admin.pelanggan.index', compact('datas'));
     }
     public function print(Request $request)
     {
-        $datas = User::where('222339_role', 'user');
+        $datas = User::where('role_222339', 'user');
 
         if($request->has('hari') && $request->has('bulan') && $request->has('tahun') && $request->has('pilihan')){
             $start = ($request->hari != 0) ? Carbon::create($request->tahun, $request->bulan, $request->hari)->startOfDay() : Carbon::create($request->tahun, $request->bulan, 1)->startOfDay();
@@ -72,13 +72,13 @@ class UserController extends Controller
         }
 
         User::create([
-            '222339_nama' => $request->nama,
-            '222339_alamat' => $request->alamat,
-            '222339_hp' => $request->hp,
-            '222339_foto' => 'image/user/'.$request->file,
-            '222339_role' => 'user',
-            '222339_username' => $request->username,
-            '222339_password' => bcrypt($request->password),
+            'nama_222339' => $request->nama,
+            'alamat_222339' => $request->alamat,
+            'hp_222339' => $request->hp,
+            'foto_222339' => 'image/user/'.$request->file,
+            'role_222339' => 'user',
+            'username_222339' => $request->username,
+            'password_222339' => bcrypt($request->password),
         ]);
 
 
@@ -121,14 +121,14 @@ class UserController extends Controller
             $fileName = time().'.'.$file->getClientOriginalExtension();
             $file->move(public_path('image/user/'), $fileName);
             $user->update([
-                '222339_foto' => 'image/user/'. $fileName,
+                'foto_222339' => 'image/user/'. $fileName,
             ]);
         }
 
         $user->update([
-            '222339_nama' => $request->nama,
-            '222339_alamat' => $request->alamat,
-            '222339_hp' => $request->hp,
+            'nama_222339' => $request->nama,
+            'alamat_222339' => $request->alamat,
+            'hp_222339' => $request->hp,
         ]);
 
         return redirect()->back();

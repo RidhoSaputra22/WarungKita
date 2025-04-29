@@ -32,7 +32,7 @@ class OrderController extends Controller
             }
 
 
-            $datas = Cart::whereBetween('222339_tanggal', [$start->toDateString(), $end])->get();
+            $datas = Cart::whereBetween('tanggal_222339', [$start->toDateString(), $end])->get();
         }
 
         return view('admin.order.print', compact('datas', 'request'));
@@ -89,7 +89,7 @@ class OrderController extends Controller
         $data = Cart::findOrFail($id);
 
         $data->update([
-            '222339_status' => 'selesai'
+            'status_222339' => 'selesai'
         ]);
         return redirect()->back();
     }

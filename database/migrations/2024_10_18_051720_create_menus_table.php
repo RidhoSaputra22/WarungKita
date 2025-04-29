@@ -12,16 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('menus_222339', function (Blueprint $table) {
-            $table->id('222339_id_menu');
-            $table->unsignedBigInteger('222339_id_kategori');
-            $table->string('222339_nama');
-            $table->string('222339_deskripsi')->nullable();
-            $table->string('222339_harga');
-            $table->integer('222339_stok');
-            $table->string('222339_foto');
+            $table->uuid('id_menu_222339')->primary();
+            $table->string('nama_222339');
+            $table->string('deskripsi_222339')->nullable();
+            $table->string('harga_222339');
+            $table->integer('stok_222339');
+            $table->string('foto_222339');
             $table->timestamps();
 
-            $table->foreign('222339_id_kategori')->references('222339_id_kategori')->on('categories_222339')->onDelete('cascade');
 
         });
     }

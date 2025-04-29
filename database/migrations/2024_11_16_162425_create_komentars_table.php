@@ -12,10 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('komentars_222339', function (Blueprint $table) {
-            $table->id('222339_id_komentar');
-            $table->unsignedBigInteger('222339_id_user');
-            $table->unsignedBigInteger('222339_id_menu');
-            $table->text('222339_komentar');
+            $table->uuid('id_komentar_222339')->primary();
+            $table->text('komentar_222339');
             $table->timestamps();
 
 

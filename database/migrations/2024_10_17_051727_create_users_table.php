@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users_222339', function (Blueprint $table) {
-            $table->unsignedBigInteger('222339_id_user')->index()->primary()->unique();
-            $table->string('222339_nama');
-            $table->string('222339_alamat');
-            $table->string('222339_hp');
-            $table->string('222339_foto')->nullable();
-            $table->string('222339_role');
-            $table->string('222339_username');
-            $table->string('222339_password');
+            $table->uuid('id_user_222339')->primary();
+            $table->string('nama_222339');
+            $table->string('alamat_222339');
+            $table->string('hp_222339');
+            $table->string('foto_222339')->nullable();
+            $table->string('role_222339');
+            $table->string('username_222339');
+            $table->string('password_222339');
             $table->timestamps();
         });
     }

@@ -13,19 +13,24 @@ return new class extends Migration
     {
         //
 
+
         Schema::table('carts_222339', function(Blueprint $table) {
-            $table->foreign('222339_id_menu')->references('222339_id_menu')->on('menus_222339')->onDelete('cascade');
-            $table->foreign('222339_id_user')->references('222339_id_user')->on('users_222339')->onDelete('cascade');
+            $table->foreignUuid('id_menu_222339')->constrained("menus_222339", "id_menu_222339")->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignUuid('id_user_222339')->constrained("users_222339", "id_user_222339")->onUpdate('cascade')->onDelete('cascade');
         });
 
+        Schema::table('menus_222339', function(Blueprint $table) {
+            $table->foreignUuid('id_kategori_222339')->constrained("categories_222339", "id_kategori_222339")->onUpdate('cascade')->onDelete('cascade');
+
+        });
         Schema::table('komentars_222339', function($table) {
-            $table->foreign('222339_id_menu')->references('222339_id_menu')->on('menus_222339')->onDelete('cascade');
-            $table->foreign('222339_id_user')->references('222339_id_user')->on('users_222339')->onDelete('cascade');
+            $table->foreignUuid('id_menu_222339')->constrained("menus_222339", "id_menu_222339")->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignUuid('id_user_222339')->constrained("users_222339", "id_user_222339")->onUpdate('cascade')->onDelete('cascade');
         });
 
         Schema::table('pesanan_222339', function($table) {
-            $table->foreign('222339_id_driver')->references('222339_id_user')->on('users_222339')->onDelete('cascade');
-            $table->foreign('222339_kode')->references('222339_kode')->on('carts_222339')->onDelete('cascade');
+            $table->foreignUuid('id_driver_222339')->constrained("users_222339", "id_user_222339")->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignUuid('kode_222339')->constrained("carts_222339", "kode_222339")->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

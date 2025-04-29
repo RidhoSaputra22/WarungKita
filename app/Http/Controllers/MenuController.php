@@ -51,10 +51,10 @@ class MenuController
         $datas = Menu::all();
 
         if($request->has('kategori')){
-            $datas = Menu::where('222339_id_kategori', $request->kategori)->get();
+            $datas = Menu::where('id_kategori_222339', $request->kategori)->get();
         }
         if($request->has('search')){
-            $datas = Menu::where('222339_nama', 'like' , '%'.$request->search.'%')->get();
+            $datas = Menu::where('nama_222339', 'like' , '%'.$request->search.'%')->get();
         }
 
         $kategori = Category::all();
@@ -98,11 +98,11 @@ class MenuController
         }
 
         Menu::create([
-            '222339_nama' => $request['nama'],
-            '222339_harga' => $request['harga'],
-            '222339_stok' => $request['stok'],
-            '222339_id_kategori' => $request['kategori'],
-            '222339_foto' => 'image/menu/' . $fileName,
+            'nama_222339' => $request['nama'],
+            'harga_222339' => $request['harga'],
+            'stok_222339' => $request['stok'],
+            'id_kategori_222339' => $request['kategori'],
+            'foto_222339' => 'image/menu/' . $fileName,
 
         ]);
 
@@ -141,10 +141,10 @@ class MenuController
         // dd($request->all());
         $menu = Menu::find($id);
         $menu->update([
-            '222339_nama' => $request['nama'],
-            '222339_harga' => $request['harga'],
-            '222339_stok' => $request['stok'],
-            '222339_id_kategori' => $request['kategori'],
+            'nama_222339' => $request['nama'],
+            'harga_222339' => $request['harga'],
+            'stok_222339' => $request['stok'],
+            'id_kategori_222339' => $request['kategori'],
             ]);
         if($request->hasFile('file')){
                 $file = $request->file('file');
@@ -152,7 +152,7 @@ class MenuController
                 $file->move(public_path('image/menu/'), $fileName);
 
                 $menu->update([
-                    '222339_foto' => 'image/menu/' . $fileName,
+                    'foto_222339' => 'image/menu/' . $fileName,
                 ]);
 
             }

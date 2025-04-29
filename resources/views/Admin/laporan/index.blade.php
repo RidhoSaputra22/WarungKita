@@ -105,37 +105,37 @@
 
                         <tr class=" border text-black">
                             <th scope="row" class="px-6 py-4  ">
-                                {{ $data->menu['222339_nama'] }}
+                                {{ $data->menu['nama_222339'] }}
                             </th>
                             <th scope="row" class="px-6 py-4  ">
-                                {{ $data->pelanggan['222339_nama'] }}
+                                {{ $data->pelanggan['nama_222339'] }}
                             </th>
                             <th scope="row" class="px-6 py-4  ">
-                                {{ $data->menu['222339_harga'] }}
+                                {{ $data->menu['harga_222339'] }}
                             </th>
                             <th scope="row" class="px-6 py-4  ">
-                                {{ number_format($data['222339_jumlah']) }}
+                                {{ number_format($data['jumlah_222339']) }}
                             </th>
                             <th scope="row" class="px-6 py-4  ">
-                                Rp. {{ number_format($data['222339_total']) }}
+                                Rp. {{ number_format($data['total_222339']) }}
                             </th>
                             <th scope="row" class="px-6 py-4  ">
-                                {{ $data['222339_status'] }}
+                                {{ $data['status_222339'] }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $data['222339_tanggal'] }}
+                                {{ $data['tanggal_222339'] }}
 
                             </td>
                             <th scope="row" class="px-6 py-4  ">
-                                Rp. {{ number_format($data['222339_total']) }}
+                                Rp. {{ number_format($data['total_222339']) }}
                             </th>
                             <td class="px-6 py-4 text-right">
-                                <form method="POST" action="{{ route('order.update', $data['222339_id_carts']) }}">
+                                <form method="POST" action="{{ route('order.update', $data['id_carts_222339']) }}">
                                     @csrf
                                     @method('PUT')
                                     <button class="text-blue">Konfirmasi</button>
                                 </form>
-                                <form method="POST" action="{{ route('order.destroy', $data['222339_id_carts']) }}">
+                                <form method="POST" action="{{ route('order.destroy', $data['id_carts_222339']) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button>Hapus</button>

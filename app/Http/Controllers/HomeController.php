@@ -16,12 +16,13 @@ class HomeController extends Controller
     public function __construct()
     {
         if(Auth::check()){
-            $this->onCart = Cart::with('menu')->where('222339_id_user', '=', Auth::user()['222339_id_user'])->where('222339_status', '=', 'belum');
+            $this->onCart = Cart::with('menu')->where('id_user_222339', '=', Auth::user()['id_user_222339'])->where('status_222339', '=', 'belum');
         }
     }
 
     public function index(){
         $datas = Menu::limit(4)->get();
+        // dd($datas);
         return view('homepage', compact('datas'));
     }
 
@@ -43,7 +44,7 @@ class HomeController extends Controller
             $params = array(
              'transaction_details' => array(
                  'order_id' => rand(),
-                 'gross_amount' => $datas->sum('222339_total'),
+                 'gross_amount' => $datas->sum('total_222339'),
                  )
                 );
 
@@ -58,14 +59,14 @@ class HomeController extends Controller
 
     public function DelFormCart($id){
         $data = Cart::with('menu')->findOrFail($id);
-        $jumlahAwal = $data['222339_jumlah'];
+        $jumlahAwal = $data['jumlah_222339'];
         $jumlahAkhir = $jumlahAwal - 1;
-        $harga = $data->menu['222339_harga'] * $jumlahAkhir;
+        $harga = $data->menu['harga_222339'] * $jumlahAkhir;
 
         if($jumlahAkhir > 0){
             $data->update([
-                '222339_jumlah' => $jumlahAkhir,
-                '222339_total' => $harga,
+                'jumlah_222339' => $jumlahAkhir,
+                'total_222339' => $harga,
             ]);
         }else{
             $data->delete();
@@ -89,39 +90,39 @@ class HomeController extends Controller
         // dd(Auth::check());
 
         if(Auth::check()){
-            $cart = $this->onCart->where('222339_id_menu', $id)->get();
+            $cart = $this->onCart->where('id_menu_222339', $id)->get();
             $menu = Menu::find($id);
             // dd($cart);
             if($cart->isEmpty()){
-                $harga = $menu['222339_harga'] * 1;
+                $harga = $menu['harga_222339'] * 1;
                 Cart::create([
-                    '222339_id_menu' => $menu['222339_id_menu'],
-                    '222339_id_user' => Auth::user()['222339_id_user'],
-                    '222339_kode' => '',
-                    '222339_jumlah' => 1,
-                    '222339_status' => 'belum',
-                    '222339_total' => $harga,
-                    '222339_tanggal' => now(),
+                    'id_menu_222339' => $menu['id_menu_222339'],
+                    'id_user_222339' => Auth::user()['id_user_222339'],
+                    'kode_222339' => '',
+                    'jumlah_222339' => 1,
+                    'status_222339' => 'belum',
+                    'total_222339' => $harga,
+                    'tanggal_222339' => now(),
                 ]);
             }else{
                 $cart = $cart->first();
-                $qty = $cart->menu['222339_stok'];
+                $qty = $cart->menu['stok_222339'];
 
                 if($request->has('jumlah')){
                     $jumlah = $request->jumlah;
-                    $harga = $menu['222339_harga'] * $jumlah;
+                    $harga = $menu['harga_222339'] * $jumlah;
                     // dd($request->all(), $jumlah);
                 }else{
-                    $jumlah = $cart['222339_jumlah'] + 1;
-                    $harga = $menu['222339_harga'] * $jumlah;
+                    $jumlah = $cart['jumlah_222339'] + 1;
+                    $harga = $menu['harga_222339'] * $jumlah;
                 }
 
                 if($jumlah < $qty){
                     $cart->update([
-                        '222339_jumlah' => $jumlah,
-                        '222339_id_user' => Auth::user()['222339_id_user'],
+                        'jumlah_222339' => $jumlah,
+                        'id_user_222339' => Auth::user()['id_user_222339'],
 
-                        '222339_total' => $harga,
+                        'total_222339' => $harga,
                     ]);
                 }else{
                     return redirect()->back()->with('error', 'Stok Tak Cukup');
@@ -144,12 +145,12 @@ class HomeController extends Controller
 
         if(Auth::check()){
             $komentar = Komentar::with('user', 'menu')
-                                ->where('222339_id_user', '!=',Auth::user()['222339_id_user'])
-                                ->where('222339_id_menu', $id)
+                                ->where('id_user_222339', '!=',Auth::user()['id_user_222339'])
+                                ->where('id_menu_222339', $id)
                                 ->get();
             $komentarKu = Komentar::with('user', 'menu')
-                                ->where('222339_id_user', Auth::user()['222339_id_user'])
-                                ->where('222339_id_menu', $id)
+                                ->where('id_user_222339', Auth::user()['id_user_222339'])
+                                ->where('id_menu_222339', $id)
                                 ->get();
         }
         return view('detail', compact('data', 'komentar', 'komentarKu'));
@@ -168,19 +169,19 @@ class HomeController extends Controller
         $status = \Midtrans\Transaction::status($id);
 
 
-        $isKodeOnCart = Cart::where('222339_kode', $id)->get()->isEmpty();
+        $isKodeOnCart = Cart::where('kode_222339', $id)->get()->isEmpty();
 
         if($isKodeOnCart){
 
             foreach($datas->get() as $data){
                 $data->menu->update([
-                    '222339_stok' => $data->menu['222339_stok'] - $data['222339_jumlah'],
+                    'stok_222339' => $data->menu['stok_222339'] - $data['jumlah_222339'],
                 ]);
             }
 
             $datas->update([
-                '222339_status' => 'selesai',
-                '222339_kode' => $id,
+                'status_222339' => 'selesai',
+                'kode_222339' => $id,
             ]);
         }
 
@@ -191,7 +192,7 @@ class HomeController extends Controller
 
     public function riwayat(){
 
-        $datas = Cart::where('222339_id_user', Auth::user()['222339_id_user'] ?? null)->get();
+        $datas = Cart::where('id_user_222339', Auth::user()['id_user_222339'] ?? null)->get();
 
         return view('riwayat', compact('datas'));
     }

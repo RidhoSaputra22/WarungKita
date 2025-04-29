@@ -12,12 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pesanan_222339', function (Blueprint $table) {
-            $table->id("222339_id_pesanan");
-            $table->unsignedBigInteger("222339_id_driver");
-            $table->string("222339_kode");
-            $table->string("222339_konfirmasi_pelanggan");
-            $table->string("222339_konfirmasi_driver");
-            $table->text("222339_foto_konfirmasi");
+            $table->uuid("id_pesanan_222339")->primary();
+            $table->string("konfirmasi_pelanggan_222339");
+            $table->string("konfirmasi_driver_222339");
+            $table->text("foto_konfirmasi_222339");
             $table->timestamps();
 
 

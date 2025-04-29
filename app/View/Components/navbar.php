@@ -21,8 +21,8 @@ class navbar extends Component
     {
         if(Auth::check()){
 
-            $this->keranjang = Cart::where('222339_id_user', '=', Auth::user()['222339_id_user'])
-                                    ->where('222339_status', 'belum')
+            $this->keranjang = Cart::where('id_user_222339', '=', Auth::user()['id_user_222339'])
+                                    ->where('status_222339', 'belum')
                                     ->count();
         }
 

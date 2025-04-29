@@ -31,6 +31,7 @@ class KomentarController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'komentar' => 'required',
             'menu' => 'required',
@@ -38,9 +39,9 @@ class KomentarController extends Controller
 
 
         Komentar::create([
-            '222339_komentar' => $request->komentar,
-            '222339_id_menu' => $request->menu,
-            '222339_id_user' => Auth::user()['222339_id_user']
+            'komentar_222339' => $request->komentar,
+            'id_menu_222339' => $request->menu,
+            'id_user_222339' => Auth::user()['id_user_222339']
         ]);
 
         return redirect()->back();
@@ -73,7 +74,7 @@ class KomentarController extends Controller
 
 
         Komentar::findOrFail($id)->update([
-            '222339_komentar' => $request->komentar,
+            'komentar_222339' => $request->komentar,
         ]);
 
         return redirect()->back();
