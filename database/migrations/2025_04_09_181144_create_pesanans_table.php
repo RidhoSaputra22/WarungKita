@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid("id_pesanan_222339")->primary();
             $table->string("konfirmasi_pelanggan_222339");
             $table->string("konfirmasi_driver_222339");
+            $table->string("status_222339");
             $table->text("foto_konfirmasi_222339");
             $table->timestamps();
 

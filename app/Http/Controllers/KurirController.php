@@ -5,62 +5,42 @@ namespace App\Http\Controllers;
 use App\Models\Kurir;
 use App\Http\Requests\StoreKurirRequest;
 use App\Http\Requests\UpdateKurirRequest;
+use App\Models\Pesanan;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KurirController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+
+    public function pending(Request $request)
     {
-        //
+        $driver = Auth::user();
+        $datas = Pesanan::where('id_driver_222339', $driver['id_user_222339'])
+                                ->where('konfirmasi_driver_222339', 'pending')
+                                ->latest()->get();
+        // dd($datas[0]->cart[0]->pelanggan, $driver);
+
+        return view('driver.pending', compact('datas', 'request'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function konfirmasi($id){
+        Pesanan::findOrFail($id)->update([
+            'konfirmasi_driver_222339' => 'selesai'
+        ]);
+
+        return redirect()->back()->with('sukses', "Konfirmasi Berhasil");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreKurirRequest $request)
+    public function selesai(Request $request)
     {
-        //
+        $driver = Auth::user();
+        $datas = Pesanan::where('id_driver_222339', $driver['id_user_222339'])
+                                ->where('konfirmasi_driver_222339', 'selesai')
+                                ->latest()->get();
+
+        return view('driver.selesai', compact('datas', 'request'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Kurir $kurir)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Kurir $kurir)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateKurirRequest $request, Kurir $kurir)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Kurir $kurir)
-    {
-        //
-    }
 }

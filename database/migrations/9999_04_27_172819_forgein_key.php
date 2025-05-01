@@ -30,6 +30,7 @@ return new class extends Migration
 
         Schema::table('pesanan_222339', function($table) {
             $table->foreignUuid('id_driver_222339')->constrained("users_222339", "id_user_222339")->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignUuid('id_user_222339')->constrained("users_222339", "id_user_222339")->onUpdate('cascade')->onDelete('cascade');
             $table->foreignUuid('kode_222339')->constrained("carts_222339", "kode_222339")->onUpdate('cascade')->onDelete('cascade');
         });
     }

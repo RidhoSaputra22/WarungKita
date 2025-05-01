@@ -1,14 +1,20 @@
 
 <x-app>
     <x-navbar></x-navbar>
-    <section id="about" class=" bg-contain lg:flex lg:justify-center">
-        <div class=" flex flex-col lg:flex-row  lg:my-10 lg:mx-24">
-            <div class="lg:w-3/5 lg:border lg:border-gray-300 lg:rounded-lg lg:shadow">
-                <div class="">
+    @if (session('error'))
+            <div class="h-14 bg-red-500 p-3">
+                <p class="text-2xl">{{ session('error') }}</p>
+            </div>
+        @endif
+
+    <section id="about" class=" bg-contain lg:flex lg:justify-center bg-gray-100">
+        <div class="h-full flex flex-col lg:flex-row  lg:my-10 lg:mx-24">
+            <div class="h-full lg:w-3/5 lg:border lg:border-gray-300 lg:rounded-lg lg:shadow">
+                <div class="h-full">
                     <div class="h-64  w-full bg-no-repeat bg-cover py-3  lg:rounded-t-lg"
                         style=" background-image: url('{{ URL::asset($data['foto_222339']) }}'); ">
                     </div>
-                    <div class="px-5 lg:px-10 pt-8  w-full bg-white">
+                    <div class="px-5 lg:px-10 py-8  w-full bg-white">
                         <h1 class="text-4xl font-semibold">{{ $data['nama_222339'] }}</h1>
                         <p class="text-sm text-justify text-gray-900 lg:text-lg mt-4">Lorem ipsum dolor sit amet
                             consectetur,
@@ -23,14 +29,14 @@
                         <div class="my-5">
                             <a href="/AddToCart/{{ $data['id_menu_222339'] }}"
                                 >
-                            <div class=" w-fit bg-red-900 text-white px-4 py-2  ">Beli Sekarang</div>
+                                <div class=" w-fit bg-red-900 text-white px-4 py-2  ">Beli Sekarang</div>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <section class="mx-5 flex-1 w-auto overflow-auto lg:border lg:border-gray-300 lg:rounded-lg lg:shadow lg:px-6 lg:py-4  lg:mx-10 mt-10 lg:mt-0 " id="komentar">
+            <section class="bg-white mx-5 flex-1 w-auto overflow-auto lg:border lg:border-gray-300 lg:rounded-lg lg:shadow lg:px-6 lg:py-4  lg:mx-10 mt-10 lg:mt-0 " id="komentar">
                 <div>
                     <h1 class="text-2xl lg:text-4xl mb-3 lg:mb-9">Komentar</h1>
                 </div>

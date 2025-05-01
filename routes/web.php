@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KomentarController;
+use App\Http\Controllers\KurirController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\ProdukController;
@@ -37,22 +38,34 @@ Route::middleware('auth')->group(function(){
     Route::get('/cart', [HomeController::class, 'cart']);
     Route::get('/riwayat', [HomeController::class, 'riwayat']);
     Route::get('/checkout/{id}', [HomeController::class, 'checkout']);
+    Route::get('/checkout-status/{id}', [HomeController::class, 'checkoutStatus']);
+});
+
+Route::middleware(['admin'])->group(function(){
+    Route::resource('/admin/menu', MenuController::class);
+    Route::resource('/admin/pelanggan', UserController::class);
+    Route::resource('/admin/laporan', LaporanController::class);
+    Route::resource('/admin/kategori', CategoryController::class);
+    Route::resource('/admin/order', OrderController::class);
+    Route::resource('/admin/komentar', KomentarController::class);
+
+    Route::get('/print/menu', [MenuController::class, 'print']);
+    Route::get('/print/pelanggan', [UserController::class, 'print']);
+    Route::get('/print/laporan', [LaporanController::class, 'print']);
+    Route::get('/print/kategori', [CategoryController::class, 'print']);
+    Route::get('/print/order', [OrderController::class, 'print']);
+    Route::get('/print/komentar', [KomentarController::class, 'print']);
+
+});
+
+Route::middleware(['driver'])->group(function(){
+    Route::get('driver/pending', [KurirController::class, 'pending']);
+    Route::get('driver/selesai', [KurirController::class, 'selesai']);
+    Route::post('driver/konfirmasi/{id}', [KurirController::class, 'konfirmasi']);
 });
 
 //Admin
-Route::resource('/admin/menu', MenuController::class);
-Route::resource('/admin/pelanggan', UserController::class);
-Route::resource('/admin/laporan', LaporanController::class);
-Route::resource('/admin/kategori', CategoryController::class);
-Route::resource('/admin/order', OrderController::class);
-Route::resource('/admin/komentar', KomentarController::class);
 
-Route::get('/print/menu', [MenuController::class, 'print']);
-Route::get('/print/pelanggan', [UserController::class, 'print']);
-Route::get('/print/laporan', [LaporanController::class, 'print']);
-Route::get('/print/kategori', [CategoryController::class, 'print']);
-Route::get('/print/order', [OrderController::class, 'print']);
-Route::get('/print/komentar', [KomentarController::class, 'print']);
 
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');

@@ -44,8 +44,18 @@ class DatabaseSeeder extends Seeder
             'password_222339' => Hash::make('admin'),
 
         ]);
+        User::factory(1)->create([
+            'nama_222339' => 'driver',
+            'alamat_222339' => 'driver',
+            'hp_222339' => 'driver',
+            'foto_222339' => 'image/user/user.jpg',
+            'role_222339' => 'driver',
+            'username_222339' => 'driver',
+            'password_222339' => Hash::make('driver'),
 
-        Cart::factory(100)->create();
+        ]);
+
+        Cart::factory(1)->create();
 
         // $this->call([
         //     CategorySeeder::class,

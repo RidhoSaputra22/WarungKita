@@ -1,4 +1,4 @@
-<div class="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-red-900 text-white" id="footter">
+<div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-red-900 text-white" id="footter">
     <div class="mx-10 flex flex-col gap-5 py-6">
         <div class="">
             <div class="text-2xl">Jl. Makan Enak No. 45,

@@ -32,7 +32,7 @@
                 </div>
                 <div class="mt-4 flex justify-end gap-3">
                     <a class="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50" href="/detail/{{ $data['id_menu_222339'] }}" >Detail</a>
-                    @if ($data['status_222339'] == "sukses")
+                    @if ($data['status_222339'] == "selesai")
                         <a class="px-4 py-2 text-sm bg-red-900 text-white rounded-lg hover:bg-red-900" href="/AddToCart/{{ $data['id_menu_222339'] }}">Beli Lagi</a>
                     @else
                         <a class="px-4 py-2 text-sm bg-red-900 text-white rounded-lg hover:bg-red-900" href="/cart">Checkout</a>

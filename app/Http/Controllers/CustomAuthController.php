@@ -47,6 +47,10 @@ class CustomAuthController extends Controller
                 return redirect('/');
             }
 
+            if($user['role_222339'] === "driver"){
+                return redirect('/driver/pending');
+            }
+
         }
 
         return redirect('/login')->with('error', 'Gagal Login');

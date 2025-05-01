@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Menu;
 use App\Models\Cart;
 use App\Models\Komentar;
+use App\Models\Pesanan;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -44,7 +46,7 @@ class HomeController extends Controller
             $params = array(
              'transaction_details' => array(
                  'order_id' => rand(),
-                 'gross_amount' => $datas->sum('total_222339'),
+                 'gross_amount' => ($datas->sum('total_222339') + 5000),
                  )
                 );
 
@@ -89,12 +91,17 @@ class HomeController extends Controller
     public function AddToCart(Request $request, $id){
         // dd(Auth::check());
 
-        if(Auth::check()){
             $cart = $this->onCart->where('id_menu_222339', $id)->get();
             $menu = Menu::find($id);
             // dd($cart);
             if($cart->isEmpty()){
                 $harga = $menu['harga_222339'] * 1;
+                $jumlah = $menu['stok_222339'];
+
+                if($jumlah < 1){
+                    return redirect()->back()->with('error', 'Stok Tak Cukup');
+                }
+
                 Cart::create([
                     'id_menu_222339' => $menu['id_menu_222339'],
                     'id_user_222339' => Auth::user()['id_user_222339'],
@@ -104,6 +111,7 @@ class HomeController extends Controller
                     'total_222339' => $harga,
                     'tanggal_222339' => now(),
                 ]);
+
             }else{
                 $cart = $cart->first();
                 $qty = $cart->menu['stok_222339'];
@@ -131,9 +139,7 @@ class HomeController extends Controller
 
             return redirect('/cart');
 
-        }else{
-            return redirect('/login');
-        }
+
 
 
     }
@@ -166,12 +172,23 @@ class HomeController extends Controller
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
         $datas = $this->onCart;
-        $status = \Midtrans\Transaction::status($id);
-
+        $status = \Midtrans\Transaction::status($id)->status_code;
 
         $isKodeOnCart = Cart::where('kode_222339', $id)->get()->isEmpty();
+        $isDriverConfirm = Pesanan::where('kode_222339', $id)->where('konfirmasi_driver_222339', '!=', 'selesai')
+        ->get()->isEmpty();
+        $isUserConfirm = Pesanan::where('kode_222339', $id)->where('konfirmasi_pelanggan_222339', '!=', 'selesai')
+        ->get()->isEmpty();
+        $pesanan = Pesanan::where('kode_222339', $id);
+        // dd($id, $pesanan->get() , $isDriverConfirm , !$isUserConfirm);
 
-        if($isKodeOnCart){
+        if($pesanan->get()->isNotEmpty() && $isDriverConfirm && !$isUserConfirm){
+            $pesanan->update([
+                'konfirmasi_pelanggan_222339' => 'selesai',
+            ]);
+        }
+
+        if($isKodeOnCart && $status == '200'){
 
             foreach($datas->get() as $data){
                 $data->menu->update([
@@ -179,14 +196,35 @@ class HomeController extends Controller
                 ]);
             }
 
+
+            $driver = User::where('role_222339', 'driver')->inRandomOrder()->first();
+            $pelanggan = $datas->first()->pelanggan;
+            // dd($pelanggan);
+
+            if($isDriverConfirm){
+
+            }
+
             $datas->update([
                 'status_222339' => 'selesai',
                 'kode_222339' => $id,
             ]);
+
+            Pesanan::create([
+                "konfirmasi_pelanggan_222339" => "pending",
+                "konfirmasi_driver_222339" => "pending",
+                "foto_konfirmasi_222339" => "pending",
+                'status_222339' => 'pending',
+                "id_driver_222339" => $driver['id_user_222339'],
+                "id_user_222339" => $pelanggan['id_user_222339'],
+                "kode_222339" => $id,
+            ]);
+
+
         }
 
 
-        return redirect('/cart');
+            return view('checkout', compact('isDriverConfirm', 'isUserConfirm'));
 
     }
 
