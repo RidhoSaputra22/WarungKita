@@ -30,7 +30,7 @@ class KurirController extends Controller
             'konfirmasi_driver_222339' => 'selesai'
         ]);
 
-        return redirect()->back()->with('sukses', "Konfirmasi Berhasil");
+        return redirect('driver/pending')->with('sukses', "Konfirmasi Berhasil");
     }
 
     public function selesai(Request $request)

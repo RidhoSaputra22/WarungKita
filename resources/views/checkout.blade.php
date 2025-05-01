@@ -30,7 +30,7 @@
                             Lihat Detail
                         </div>
                     </a>
-                    @if ($isUserConfirm)
+                    @if (!$isUserConfirm)
 
                     <form action="" method="get" class="flex-1">
                         @csrf
@@ -66,7 +66,7 @@
                             Lihat Detail
                         </div>
                     </a>
-                    @if ($isUserConfirm)
+                    @if (!$isUserConfirm)
 
                     <form action="" method="get" class="flex-1">
                         @csrf
@@ -83,7 +83,6 @@
     </section>
 
 
-    <x-footter></x-footter>
 
 
 </x-app>

@@ -58,5 +58,4 @@
 
     </section>
 
-    <x-footter></x-footter>
 </x-app>

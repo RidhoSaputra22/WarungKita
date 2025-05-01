@@ -49,7 +49,4 @@
         </div>
     </div>
 
-    <x-footter>
-
-    </x-footter>
 </x-app>

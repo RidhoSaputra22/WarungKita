@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        Cart::factory(1)->create();
+        Cart::factory(2)->create();
 
         // $this->call([
         //     CategorySeeder::class,

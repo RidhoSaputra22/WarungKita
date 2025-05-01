@@ -196,19 +196,15 @@ class HomeController extends Controller
                 ]);
             }
 
-
             $driver = User::where('role_222339', 'driver')->inRandomOrder()->first();
-            $pelanggan = $datas->first()->pelanggan;
-            // dd($pelanggan);
-
-            if($isDriverConfirm){
-
-            }
+            $pelanggan = $datas->get()[0]->pelanggan;
 
             $datas->update([
                 'status_222339' => 'selesai',
                 'kode_222339' => $id,
             ]);
+
+            // dd($datas->get());
 
             Pesanan::create([
                 "konfirmasi_pelanggan_222339" => "pending",
@@ -219,6 +215,9 @@ class HomeController extends Controller
                 "id_user_222339" => $pelanggan['id_user_222339'],
                 "kode_222339" => $id,
             ]);
+
+            $isDriverConfirm = false;
+            $isUserConfirm = false;
 
 
         }
