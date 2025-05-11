@@ -1,6 +1,6 @@
 <x-admin-app>
     <div>
-        <a href="{{route('pelanggan.index')}}" class="bg-slate-950 text-white px-2 py-3 ">Kembali</a>
+        <a href="{{route('pelanggan.index')}}" class="bg-slate-950 text-white px-2 py-3  ">Kembali</a>
     </div>
     <form action="{{ route('pelanggan.update', $data['id_user_222339']) }}" method="POST" class="py-5 flex " enctype="multipart/form-data">
         @csrf
@@ -17,17 +17,6 @@
             <div class="w-full h-auto mb-2">
                 <h1 class=" text-sm">Hp</h1>
                 <input name="hp" value="{{ $data['hp_222339'] }}" class="rounded w-full border p-2">
-            </div>
-            <div class="w-full h-auto mb-2">
-                <h1 class=" text-sm">Role</h1>
-                <select name="role" class="rounded w-full border p-2">
-                    <option value="user" {{ $data['role_222339'] == 'user' ? 'selected' : '' }}>Pelanggan</option>
-                    <option value="driver" {{ $data['role_222339'] == 'driver' ? 'selected' : '' }}>Kurir</option>
-                </select>
-            </div>
-            <div class="w-full h-auto mb-2">
-                <h1 class=" text-sm">Foto</h1>
-                <input type="file" name="file" class="rounded w-full border p-2">
             </div>
             <div>
                 <button class="bg-slate-950 text-white px-3 py-2 rounded my-3">

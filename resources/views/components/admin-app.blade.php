@@ -16,6 +16,9 @@
                 <li class="p-3 hover:bg-white hover:text-black {{ request()->is('admin/order*') ? 'bg-white text-black' : '' }}">
                     <a href="/admin/order">Order</a>
                 </li>
+                <li class="p-3 hover:bg-white hover:text-black {{ request()->is('admin/pesanan*') ? 'bg-white text-black' : '' }}">
+                    <a href="/admin/pesanan">Pesanan</a>
+                </li>
                 <li class="p-3 hover:bg-white hover:text-black {{ request()->is('admin/kategori*') ? 'bg-white text-black' : '' }}">
                     <a href="/admin/kategori">Kategori</a>
                 </li>

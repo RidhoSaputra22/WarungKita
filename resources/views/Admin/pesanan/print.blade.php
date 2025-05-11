@@ -1,17 +1,14 @@
 <x-app>
     <section class="p-10">
         <div>
-            <a href="/admin/pelanggan">Kembali</a>
+            <a href="/admin/pesanan/">Kembali</a>
         </div>
-
         <div class="py-3">
-            <h1 class="text-3xl ">Laporan Pelanggan</h1>
+            <h1 class="text-3xl ">Laporan Pesanan RestoKu</h1>
             <h1 class="text-sm pb-3">Tanggal: {{now()->toString()}}</h1>
         </div>
 
-
-
-        <form class="py-2 flex gap-3 items-center">
+        <form class="py-2 flex gap-3 items-center print:hidden">
             <div>
                 <h1>Pilihan</h1>
                 <select name="pilihan" id="" class="p-2 border">
@@ -61,78 +58,64 @@
             </div>
         </form>
 
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div class=" ">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
-                    <tr>
+                    <tr class="text-center">
+                        <th scope="col" class="px-6 py-3">
+                            Kode Pesanan
+                        </th>
                         <th scope="col" class="px-6 py-3">
                             Nama Pelanggan
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            <div class="flex items-center">
-                                Alamat
-                                <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                    </svg></a>
-                            </div>
+                            Nama Kurir
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            <div class="flex items-center">
-                                No Hp
-                                <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                    </svg></a>
-                            </div>
+                            Konfirmasi Kurir
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            <div class="flex items-center">
-                                Role
-                                <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                    </svg></a>
-                            </div>
+                            Konfirmasi Pelanggan
                         </th>
+
 
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
                                 Tanggal
-                                <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                    </svg></a>
+
                             </div>
                         </th>
+
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($datas as $data)
 
-                    <tr class=" border text-black">
+                    <tr class="text-center border text-black">
                         <th scope="row" class="px-6 py-4  ">
-                            {{ $data['nama_222339'] }}
+                            {{ $data['kode_222339'] }}
+                        </th>
+                        <th scope="row" class="px-6 py-4  ">
+                            {{ $data->cart[0]->pelanggan['nama_222339'] }}
+                        </th>
+                        <th scope="row" class="px-6 py-4  ">
+                            {{ $data->driver['nama_222339'] }}
+                        </th>
+                        <th scope="row" class="px-6 py-4  ">
+                            {{ $data['konfirmasi_driver_222339'] }}
+                        </th>
+                        <th scope="row" class="px-6 py-4  ">
+                            {{ $data['konfirmasi_pelanggan_222339'] }}
                         </th>
                         <td class="px-6 py-4">
-                            {{ $data['alamat_222339'] }}
-
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $data['hp_222339'] }}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $data['role_222339'] }}
-                        </td>
-                        <td class="px-6 py-4">
                             {{ $data['created_at'] }}
+
                         </td>
                     </tr>
                     @endforeach
+
+
+
 
                 </tbody>
             </table>

@@ -24,6 +24,13 @@
                 <input name="password" class="rounded w-full border p-2">
             </div>
             <div class="w-full h-auto mb-2">
+                <h1 class=" text-sm">Role</h1>
+                <select name="role" class="rounded w-full border p-2">
+                    <option value="user">Pelanggan</option>
+                    <option value="driver">Kurir</option>
+                </select>
+            </div>
+            <div class="w-full h-auto mb-2">
                 <h1 class=" text-sm">Foto</h1>
                 <input type="file" name="file" class="rounded w-full border p-2">
             </div>

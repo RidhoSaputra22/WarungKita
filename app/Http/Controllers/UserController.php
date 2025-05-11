@@ -15,12 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $datas = User::where('role_222339', 'user')->get();
+        $datas = User::where('role_222339','!=' ,'admin')->get();
         return view('admin.pelanggan.index', compact('datas'));
     }
     public function print(Request $request)
     {
-        $datas = User::where('role_222339', 'user');
+        $datas = User::where('role_222339','!=' ,'admin')->get();
 
         if($request->has('hari') && $request->has('bulan') && $request->has('tahun') && $request->has('pilihan')){
             $start = ($request->hari != 0) ? Carbon::create($request->tahun, $request->bulan, $request->hari)->startOfDay() : Carbon::create($request->tahun, $request->bulan, 1)->startOfDay();
@@ -34,7 +34,7 @@ class UserController extends Controller
             }
 
 
-            $datas = $datas->whereBetween('created_at', [$start->toDateString(), $end])->get();
+            $datas =  User::where('role_222339','!=' ,'admin')->whereBetween('created_at', [$start->toDateString(), $end])->get();
         }
 
         return view('admin.pelanggan.print', compact('datas', 'request'));
@@ -61,6 +61,7 @@ class UserController extends Controller
             'file' => 'required',
             'username' => 'required',
             'password' => 'required',
+            'role' => 'required',
         ]);
 
         if($request->hasFile('file')){
@@ -76,7 +77,7 @@ class UserController extends Controller
             'alamat_222339' => $request->alamat,
             'hp_222339' => $request->hp,
             'foto_222339' => 'image/user/'.$request->file,
-            'role_222339' => 'user',
+            'role_222339' => $request->role,
             'username_222339' => $request->username,
             'password_222339' => bcrypt($request->password),
         ]);
@@ -113,6 +114,7 @@ class UserController extends Controller
             'alamat' => 'required',
             'hp' => 'required',
             'file' => 'nullable',
+            'role' => 'required',
         ]);
 
         $user = User::findOrFail($id);
@@ -129,6 +131,8 @@ class UserController extends Controller
             'nama_222339' => $request->nama,
             'alamat_222339' => $request->alamat,
             'hp_222339' => $request->hp,
+            'role_222339' => $request->role,
+
         ]);
 
         return redirect()->back();

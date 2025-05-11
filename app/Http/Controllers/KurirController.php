@@ -20,6 +20,7 @@ class KurirController extends Controller
         $datas = Pesanan::where('id_driver_222339', $driver['id_user_222339'])
                                 ->where('konfirmasi_driver_222339', 'pending')
                                 ->latest()->get();
+        // dd($datas, $driver);
         // dd($datas[0]->cart[0]->pelanggan, $driver);
 
         return view('driver.pending', compact('datas', 'request'));

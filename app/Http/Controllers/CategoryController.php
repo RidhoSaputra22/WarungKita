@@ -96,7 +96,7 @@ class CategoryController
     {
 
         Category::findOrFail($id)->update([
-            'kategori' => $request['kategori']
+            'kategori_222339' => $request['kategori']
         ]);
 
         return redirect()->route('kategori.index');

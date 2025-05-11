@@ -11,6 +11,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PesananController;
 use App\Http\Controllers\UserController;
 
 use App\Models\Menu;
@@ -47,6 +48,7 @@ Route::middleware(['admin'])->group(function(){
     Route::resource('/admin/laporan', LaporanController::class);
     Route::resource('/admin/kategori', CategoryController::class);
     Route::resource('/admin/order', OrderController::class);
+    Route::resource('/admin/pesanan', PesananController::class);
     Route::resource('/admin/komentar', KomentarController::class);
 
     Route::get('/print/menu', [MenuController::class, 'print']);
@@ -54,6 +56,7 @@ Route::middleware(['admin'])->group(function(){
     Route::get('/print/laporan', [LaporanController::class, 'print']);
     Route::get('/print/kategori', [CategoryController::class, 'print']);
     Route::get('/print/order', [OrderController::class, 'print']);
+    Route::get('/print/pesanan', [PesananController::class, 'print']);
     Route::get('/print/komentar', [KomentarController::class, 'print']);
 
 });

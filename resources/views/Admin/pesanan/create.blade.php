@@ -25,7 +25,7 @@
                 <h1 class=" text-sm">Password</h1>
                 <input name="password" class="rounded w-full border p-2">
             </div>
-
+           
 
             <div>
                 <button class="bg-lime-950 text-white px-3 py-2 rounded my-3">
@@ -33,7 +33,7 @@
                 </button>
             </div>
         </div>
-
+       
     </form>
 
 </x-admin-app>
