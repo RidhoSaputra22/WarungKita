@@ -13,7 +13,7 @@
                     Baru</a>
                 <a href="/driver/selesai/"
                     class="w-full flex justify-center items-center px-6 py-2 text-sm  hover:text-white hover:bg-red-900 lg:w-max">Orderan
-                    Selesai </a>
+                    Selesai</a>
 
             </div>
             <div class="py-3 flex flex-col gap-3 lg:flex-row h-full ">
