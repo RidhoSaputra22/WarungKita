@@ -21,8 +21,8 @@ class CartFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_menu_222339' => Menu::factory(),
-            'id_user_222339' => User::factory(),
+            'nama_menu_222339' => Menu::factory(),
+            'username_222339' => User::factory(),
             'kode_222339' => fake()->word(),
             'status_222339' => 'belum',
             'jumlah_222339' => fake()->randomElement([15000, 23000, 7000, 6000, 12000]),

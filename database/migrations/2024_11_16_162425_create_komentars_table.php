@@ -12,12 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('komentars_222339', function (Blueprint $table) {
-            $table->uuid('id_komentar_222339')->primary();
+            $table->ulid('id_komentar_222339')->primary();
             $table->text('komentar_222339');
             $table->timestamps();
-
-
-
         });
     }
 

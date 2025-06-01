@@ -15,22 +15,22 @@ class CategoryController
      * Display a listing of the resource.
      */
 
-     public function index()
+    public function index()
     {
         $datas = Category::all();
         return view('admin.kategori.index', compact('datas'));
     }
-     public function print(Request $request)
+    public function print(Request $request)
     {
         $datas = Category::all();
 
-        if($request->has('hari') && $request->has('bulan') && $request->has('tahun') && $request->has('pilihan')){
+        if ($request->has('hari') && $request->has('bulan') && $request->has('tahun') && $request->has('pilihan')) {
             $start = ($request->hari != 0) ? Carbon::create($request->tahun, $request->bulan, $request->hari)->startOfDay() : Carbon::create($request->tahun, $request->bulan, 1)->startOfDay();
-            if($request->pilihan == 1){
+            if ($request->pilihan == 1) {
                 $end = $start->copy()->endOfDay()->format('Y-m-d H:i:s');
-            }else if($request->pilihan == 2){
+            } else if ($request->pilihan == 2) {
                 $end = $start->copy()->addDay(7)->endOfDay()->format('Y-m-d H:i:s');
-            }else if($request->pilihan == 3){
+            } else if ($request->pilihan == 3) {
                 $start = Carbon::create($request->tahun, $request->bulan, 1)->startOfDay();
                 $end = $start->copy()->endOfMonth()->format('Y-m-d H:i:s');
             }
@@ -49,7 +49,6 @@ class CategoryController
     public function create()
     {
         return view('admin.kategori.create');
-
     }
 
     /**
@@ -59,7 +58,7 @@ class CategoryController
     {
 
         $request->validate([
-            'kategori' => 'required',
+            'kategori' => 'required|unique:categories_222339,kategori_222339',
         ]);
 
         Category::create([
@@ -67,7 +66,6 @@ class CategoryController
         ]);
 
         return redirect()->route('kategori.index');
-
     }
 
     /**
@@ -78,7 +76,6 @@ class CategoryController
         $datas = Category::findOrFail($id);
 
         return view('Admin.kategori.show', compact('datas'));
-
     }
 
     /**
@@ -94,6 +91,10 @@ class CategoryController
      */
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'kategori' => 'required|unique:categories_222339,kategori_222339',
+        ]);
 
         Category::findOrFail($id)->update([
             'kategori_222339' => $request['kategori']

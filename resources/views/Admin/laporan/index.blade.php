@@ -22,7 +22,7 @@
                     </div>
                     <div>
                         <h3 class="text-sm font-medium text-gray-500 mb-1">Produk Terjual</h3>
-                        <p>{{$datas['pesanan_selesai']}}</p>
+                        <p>{{ $datas['pesanan_selesai'] }}</p>
                     </div>
                 </div>
 
@@ -33,7 +33,7 @@
                     </div>
                     <div>
                         <h3 class="text-sm font-medium text-gray-500 mb-1">Jumlah Pelanggan</h3>
-                        <p>{{$datas['pelanggan']}}</p>
+                        <p>{{ $datas['pelanggan'] }}</p>
 
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                     </div>
                     <div>
                         <h3 class="text-sm font-medium text-gray-500 mb-1">Banyak Menu</h3>
-                        <p>{{$datas['menu']}}</p>
+                        <p>{{ $datas['menu'] }}</p>
 
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                     </div>
                     <div>
                         <h3 class="text-sm font-medium text-gray-500 mb-1">Pembelian Tak Terkonfirmasi</h3>
-                        <p>{{$datas['pesanan_belum']}}</p>
+                        <p>{{ $datas['pesanan_belum'] }}</p>
 
                     </div>
                 </div>
@@ -102,46 +102,45 @@
                     </thead>
                     <tbody>
                         @foreach ($datas['order'] as $data)
+                            <tr class=" border text-black">
+                                <th scope="row" class="px-6 py-4  ">
+                                    {{ $data->menu['nama_222339'] }}
+                                </th>
+                                <th scope="row" class="px-6 py-4  ">
+                                    {{ $data->pelanggan['nama_222339'] }}
+                                </th>
+                                <th scope="row" class="px-6 py-4  ">
+                                    {{ $data->menu['harga_222339'] }}
+                                </th>
+                                <th scope="row" class="px-6 py-4  ">
+                                    {{ number_format($data['jumlah_222339']) }}
+                                </th>
+                                <th scope="row" class="px-6 py-4  ">
+                                    Rp. {{ number_format($data['total_222339']) }}
+                                </th>
+                                <th scope="row" class="px-6 py-4  ">
+                                    {{ $data['status_222339'] }}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $data['tanggal_222339'] }}
 
-                        <tr class=" border text-black">
-                            <th scope="row" class="px-6 py-4  ">
-                                {{ $data->menu['nama_222339'] }}
-                            </th>
-                            <th scope="row" class="px-6 py-4  ">
-                                {{ $data->pelanggan['nama_222339'] }}
-                            </th>
-                            <th scope="row" class="px-6 py-4  ">
-                                {{ $data->menu['harga_222339'] }}
-                            </th>
-                            <th scope="row" class="px-6 py-4  ">
-                                {{ number_format($data['jumlah_222339']) }}
-                            </th>
-                            <th scope="row" class="px-6 py-4  ">
-                                Rp. {{ number_format($data['total_222339']) }}
-                            </th>
-                            <th scope="row" class="px-6 py-4  ">
-                                {{ $data['status_222339'] }}
-                            </th>
-                            <td class="px-6 py-4">
-                                {{ $data['tanggal_222339'] }}
-
-                            </td>
-                            <th scope="row" class="px-6 py-4  ">
-                                Rp. {{ number_format($data['total_222339']) }}
-                            </th>
-                            <td class="px-6 py-4 text-right">
-                                <form method="POST" action="{{ route('order.update', $data['id_carts_222339']) }}">
-                                    @csrf
-                                    @method('PUT')
-                                    <button class="text-blue">Konfirmasi</button>
-                                </form>
-                                <form method="POST" action="{{ route('order.destroy', $data['id_carts_222339']) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button>Hapus</button>
-                                </form>
-                            </td>
-                        </tr>
+                                </td>
+                                <th scope="row" class="px-6 py-4  ">
+                                    Rp. {{ number_format($data['total_222339']) }}
+                                </th>
+                                <td class="px-6 py-4 text-right">
+                                    <form method="POST" action="{{ route('order.update', $data['kode_222339']) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <button class="text-blue">Konfirmasi</button>
+                                    </form>
+                                    <form method="POST" action="{{ route('order.destroy', $data['kode_222339']) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button>Hapus</button>
+                                    </form>
+                                </td>
+                            </tr>
                         @endforeach
 
                     </tbody>

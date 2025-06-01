@@ -6,7 +6,7 @@
         </div>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <table class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -50,31 +50,31 @@
                 </thead>
                 <tbody>
                     @foreach ($datas as $data)
+                        <tr class="text-black border ">
+                            <th scope="row" class="px-6 py-4 ">
+                                {{ $data['nama_222339'] }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ $data['alamat_222339'] }}
 
-                    <tr class=" border text-black">
-                        <th scope="row" class="px-6 py-4  ">
-                            {{ $data['nama_222339'] }}
-                        </th>
-                        <td class="px-6 py-4">
-                            {{ $data['alamat_222339'] }}
-
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $data['hp_222339'] }}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $data['role_222339'] }}
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <a href="{{ route('pelanggan.show', $data['id_user_222339']) }}"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
-                            <form method="POST" action="{{ route('pelanggan.destroy', $data['id_user_222339']) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button>Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $data['hp_222339'] }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $data['role_222339'] }}
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <a href="{{ route('pelanggan.show', $data['username_222339']) }}"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
+                                <form method="POST"
+                                    action="{{ route('pelanggan.destroy', $data['username_222339']) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button>Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
                     @endforeach
 
                 </tbody>

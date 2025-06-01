@@ -14,16 +14,17 @@ class Komentar extends Model
     protected $primaryKey = "id_komentar_222339";
 
     protected $fillable = [
-        'id_user_222339',
-        'id_menu_222339',
+        'username_222339',
+        'nama_menu_222339',
         'komentar_222339',
     ];
 
-    public function user() {
-        return $this->belongsTo(User::class, 'id_user_222339');
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'username_222339');
     }
-    public function menu() {
-        return $this->belongsTo(Menu::class, 'id_menu_222339');
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class, 'nama_222339');
     }
-
 }

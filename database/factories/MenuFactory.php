@@ -36,7 +36,7 @@ class MenuFactory extends Factory
             'harga_222339' => fake()->numberBetween(1000, 100000),
             'foto_222339' => 'image/nasilemak.jpeg',
             'stok_222339' => 10,
-            'id_kategori_222339' => Category::factory(),
+            'kategori_222339' => Category::factory(),
             'created_at' => fake()->unique()->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = "Asia/Makassar"),
         ];
     }

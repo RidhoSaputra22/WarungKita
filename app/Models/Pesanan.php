@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pesanan extends Model
 {
-    use HasFactory,HasUlids;
+    use HasFactory, HasUlids;
 
     protected $table = "pesanan_222339";
     protected $primaryKey = "id_pesanan_222339";
@@ -19,23 +19,23 @@ class Pesanan extends Model
         "konfirmasi_driver_222339",
         "status_222339",
         "foto_konfirmasi_222339",
-        "id_driver_222339",
-        "id_user_222339",
+        "driver_222339",
+        "user_222339",
         "kode_222339"
     ];
 
-    public function driver(){
-        return $this->belongsTo(User::class, "id_driver_222339", "id_user_222339");
+    public function driver()
+    {
+        return $this->belongsTo(User::class, "driver_222339", "username_222339");
     }
 
-    public function pelanggan(){
-        return $this->belongsTo(User::class, "id_user_222339", "id_user_222339");
+    public function pelanggan()
+    {
+        return $this->belongsTo(User::class, "user_222339", "username_222339");
     }
 
-    public function cart(){
+    public function cart()
+    {
         return $this->hasMany(Cart::class, "kode_222339", "kode_222339");
     }
-
-
-
 }

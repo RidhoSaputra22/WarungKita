@@ -15,26 +15,26 @@ class UserController extends Controller
      */
     public function index()
     {
-        $datas = User::where('role_222339','!=' ,'admin')->get();
+        $datas = User::where('role_222339', '!=', 'admin')->get();
         return view('admin.pelanggan.index', compact('datas'));
     }
     public function print(Request $request)
     {
-        $datas = User::where('role_222339','!=' ,'admin')->get();
+        $datas = User::where('role_222339', '!=', 'admin')->get();
 
-        if($request->has('hari') && $request->has('bulan') && $request->has('tahun') && $request->has('pilihan')){
+        if ($request->has('hari') && $request->has('bulan') && $request->has('tahun') && $request->has('pilihan')) {
             $start = ($request->hari != 0) ? Carbon::create($request->tahun, $request->bulan, $request->hari)->startOfDay() : Carbon::create($request->tahun, $request->bulan, 1)->startOfDay();
-            if($request->pilihan == 1){
+            if ($request->pilihan == 1) {
                 $end = $start->copy()->endOfDay()->format('Y-m-d H:i:s');
-            }else if($request->pilihan == 2){
+            } else if ($request->pilihan == 2) {
                 $end = $start->copy()->addDay(7)->endOfDay()->format('Y-m-d H:i:s');
-            }else if($request->pilihan == 3){
+            } else if ($request->pilihan == 3) {
                 $start = Carbon::create($request->tahun, $request->bulan, 1)->startOfDay();
                 $end = $start->copy()->endOfMonth()->format('Y-m-d H:i:s');
             }
 
 
-            $datas =  User::where('role_222339','!=' ,'admin')->whereBetween('created_at', [$start->toDateString(), $end])->get();
+            $datas =  User::where('role_222339', '!=', 'admin')->whereBetween('created_at', [$start->toDateString(), $end])->get();
         }
 
         return view('admin.pelanggan.print', compact('datas', 'request'));
@@ -59,24 +59,23 @@ class UserController extends Controller
             'alamat' => 'required',
             'hp' => 'required',
             'file' => 'required',
-            'username' => 'required',
+            'username' => 'required|unique:users_222339,username_222339',
             'password' => 'required',
             'role' => 'required',
         ]);
 
-        if($request->hasFile('file')){
+        if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $fileName = time().'.'.$file->getClientOriginalExtension();
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('image/user/'), $fileName);
             $request->file = $fileName;
-
         }
 
         User::create([
             'nama_222339' => $request->nama,
             'alamat_222339' => $request->alamat,
             'hp_222339' => $request->hp,
-            'foto_222339' => 'image/user/'.$request->file,
+            'foto_222339' => 'image/user/' . $request->file,
             'role_222339' => $request->role,
             'username_222339' => $request->username,
             'password_222339' => bcrypt($request->password),
@@ -118,12 +117,12 @@ class UserController extends Controller
         ]);
 
         $user = User::findOrFail($id);
-        if($request->hasFile('file')){
+        if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $fileName = time().'.'.$file->getClientOriginalExtension();
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('image/user/'), $fileName);
             $user->update([
-                'foto_222339' => 'image/user/'. $fileName,
+                'foto_222339' => 'image/user/' . $fileName,
             ]);
         }
 

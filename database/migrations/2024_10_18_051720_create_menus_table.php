@@ -12,15 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('menus_222339', function (Blueprint $table) {
-            $table->uuid('id_menu_222339')->primary();
-            $table->string('nama_222339');
+            $table->string('nama_222339')->primary()->index()->unique();
             $table->string('deskripsi_222339')->nullable();
             $table->string('harga_222339');
             $table->integer('stok_222339');
             $table->string('foto_222339');
             $table->timestamps();
-
-
         });
     }
 

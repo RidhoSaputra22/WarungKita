@@ -23,6 +23,14 @@ class StoreCartRequest extends FormRequest
     {
         return [
             //
+            'nama_menu_222339' => 'required',
+            'username_222339' => 'required',
+            'kode_222339' => 'required|exists:carts_222339,kode_222339',
+            'status_222339' => 'required',
+            'jumlah_222339' => 'required',
+            'total_222339' => 'required',
+            'tanggal_222339' => 'required',
+
         ];
     }
 }

@@ -6,7 +6,7 @@
         </div>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <table class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -21,21 +21,20 @@
                 </thead>
                 <tbody>
                     @foreach ($datas as $data)
-
-                    <tr class=" border text-black">
-                        <th scope="row" class="px-6 py-4  ">
-                            {{ $data['kategori_222339'] }}
-                        </th>
-                        <td class="px-6 py-4 text-right">
-                            <a href="{{ route('kategori.show', $data['id_kategori_222339']) }}"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
-                            <form method="POST" action="{{ route('kategori.destroy', $data['id_kategori_222339']) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button>Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
+                        <tr class="text-black border ">
+                            <th scope="row" class="px-6 py-4 ">
+                                {{ $data['kategori_222339'] }}
+                            </th>
+                            <td class="px-6 py-4 text-right">
+                                <a href="{{ route('kategori.show', $data['kategori_222339']) }}"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
+                                <form method="POST" action="{{ route('kategori.destroy', $data['kategori_222339']) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button>Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
                     @endforeach
 
                 </tbody>

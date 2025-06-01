@@ -19,20 +19,19 @@ class MenuController
         //
         $datas = Menu::all();
         return view('admin.menu.index', compact('datas'));
-
     }
     public function print(Request $request)
     {
         //
         $datas = Menu::all();
 
-        if($request->has('hari') && $request->has('bulan') && $request->has('tahun') && $request->has('pilihan')){
+        if ($request->has('hari') && $request->has('bulan') && $request->has('tahun') && $request->has('pilihan')) {
             $start = ($request->hari != 0) ? Carbon::create($request->tahun, $request->bulan, $request->hari)->startOfDay() : Carbon::create($request->tahun, $request->bulan, 1)->startOfDay();
-            if($request->pilihan == 1){
+            if ($request->pilihan == 1) {
                 $end = $start->copy()->endOfDay()->format('Y-m-d H:i:s');
-            }else if($request->pilihan == 2){
+            } else if ($request->pilihan == 2) {
                 $end = $start->copy()->addDay(7)->endOfDay()->format('Y-m-d H:i:s');
-            }else if($request->pilihan == 3){
+            } else if ($request->pilihan == 3) {
                 $start = Carbon::create($request->tahun, $request->bulan, 1)->startOfDay();
                 $end = $start->copy()->endOfMonth()->format('Y-m-d H:i:s');
             }
@@ -42,7 +41,6 @@ class MenuController
         }
 
         return view('admin.menu.print', compact('datas', 'request'));
-
     }
 
     public function menu(Request $request)
@@ -50,17 +48,16 @@ class MenuController
         //
         $datas = Menu::all();
 
-        if($request->has('kategori')){
+        if ($request->has('kategori')) {
             $datas = Menu::where('id_kategori_222339', $request->kategori)->get();
         }
-        if($request->has('search')){
-            $datas = Menu::where('nama_222339', 'like' , '%'.$request->search.'%')->get();
+        if ($request->has('search')) {
+            $datas = Menu::where('nama_222339', 'like', '%' . $request->search . '%')->get();
         }
 
         $kategori = Category::all();
 
         return view('menu', compact('datas', 'kategori'));
-
     }
 
 
@@ -79,36 +76,34 @@ class MenuController
     public function store(Request $request)
     {
         //
-        // dd($request->all());
 
         $request->validate([
-            'nama' => 'required',
+            'nama' => 'required|unique:menus_222339,nama_222339',
             'harga' => 'required',
             'kategori' => 'required',
             'stok' => 'required|numeric',
-            'file' => 'nullable',
+            'file' => 'required',
+
         ]);
+        // dd($request->all());
 
 
-        if($request->hasFile('file')){
+        if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $fileName = time().'.'.$file->getClientOriginalExtension();
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('image/menu/'), $fileName);
-
         }
 
         Menu::create([
             'nama_222339' => $request['nama'],
             'harga_222339' => $request['harga'],
             'stok_222339' => $request['stok'],
-            'id_kategori_222339' => $request['kategori'],
+            'kategori_222339' => $request['kategori'],
             'foto_222339' => 'image/menu/' . $fileName,
 
         ]);
 
         return redirect()->route('menu.index');
-
-
     }
 
 
@@ -139,26 +134,26 @@ class MenuController
     {
         //
         // dd($request->all());
+        $request->validate([
+            'nama' => 'required',
+        ]);
         $menu = Menu::find($id);
         $menu->update([
             'nama_222339' => $request['nama'],
             'harga_222339' => $request['harga'],
             'stok_222339' => $request['stok'],
             'id_kategori_222339' => $request['kategori'],
+        ]);
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('image/menu/'), $fileName);
+
+            $menu->update([
+                'foto_222339' => 'image/menu/' . $fileName,
             ]);
-        if($request->hasFile('file')){
-                $file = $request->file('file');
-                $fileName = time().'.'.$file->getClientOriginalExtension();
-                $file->move(public_path('image/menu/'), $fileName);
-
-                $menu->update([
-                    'foto_222339' => 'image/menu/' . $fileName,
-                ]);
-
-            }
-            return redirect()->route('menu.index');
-
-
+        }
+        return redirect()->route('menu.index');
     }
 
     /**

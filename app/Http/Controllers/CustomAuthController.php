@@ -31,31 +31,26 @@ class CustomAuthController extends Controller
             'password' => $request->password
         ];
 
-        // dd(Auth::attempt($credentials));
 
-        if(Auth::attempt($credentials)){
+        if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $request->session()->put('current_user', Auth::user());
             // dd($user['role_222339']);
 
-            if($user['role_222339'] === "admin"){
+            if ($user['role_222339'] === "admin") {
                 return redirect('admin/laporan');
-
             }
 
-            if($user['role_222339'] === "user"){
+            if ($user['role_222339'] === "user") {
                 return redirect('/');
             }
 
-            if($user['role_222339'] === "driver"){
+            if ($user['role_222339'] === "driver") {
                 return redirect('/driver/pending');
             }
-
         }
 
         return redirect('/login')->with('error', 'Gagal Login');
-
-
     }
 
 
@@ -85,22 +80,22 @@ class CustomAuthController extends Controller
 
     public function create(array $data)
     {
-      return User::create([
-        'nama_222339' => $data['nama'],
-        'alamat_222339' => $data['alamat'],
-        'hp_222339' => $data['hp'],
-        'role_222339' => 'user',
+        return User::create([
+            'nama_222339' => $data['nama'],
+            'alamat_222339' => $data['alamat'],
+            'hp_222339' => $data['hp'],
+            'role_222339' => 'user',
 
-        'username_222339' => $data['username'],
-        'password_222339' => Hash::make($data['password']),
+            'username_222339' => $data['username'],
+            'password_222339' => Hash::make($data['password']),
 
 
-      ]);
+        ]);
     }
 
     public function dashboard()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             // Debug: Log successful dashboard access
             // \Log::info('User accessed dashboard: ' . Auth::user()->username_222339);
             return view('pemasukan.index');
@@ -111,11 +106,11 @@ class CustomAuthController extends Controller
         return redirect("login")->withErrors('You are not allowed to access');
     }
 
-    public function signout(){
+    public function signout()
+    {
         Session::flush();
         Auth::logout();
 
         return redirect('/login');
     }
-
 }

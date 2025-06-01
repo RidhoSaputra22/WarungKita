@@ -12,19 +12,18 @@ class Menu extends Model
 
 
     protected $table = "menus_222339";
-    protected $primaryKey = "id_menu_222339";
+    protected $primaryKey = "nama_222339";
 
     protected $fillable = [
         'nama_222339',
         'harga_222339',
         'foto_222339',
         'stok_222339',
-        'id_kategori_222339',
+        'kategori_222339',
     ];
 
-    public function kategori() {
-        return $this->belongsTo(Category::class, 'id_kategori_222339');
-
+    public function kategori()
+    {
+        return $this->belongsTo(Category::class, 'kategori_222339');
     }
-
 }

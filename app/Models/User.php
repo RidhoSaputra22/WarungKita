@@ -16,7 +16,7 @@ class User extends Authenticatable
     protected $table = "users_222339";
     protected $authPasswordName = 'password_222339';
 
-    protected $primaryKey = "id_user_222339";
+    protected $primaryKey = "username_222339";
 
 
 
@@ -29,5 +29,4 @@ class User extends Authenticatable
         'username_222339',
         'password_222339'
     ];
-
 }

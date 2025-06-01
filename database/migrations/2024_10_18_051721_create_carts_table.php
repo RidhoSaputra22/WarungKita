@@ -12,16 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('carts_222339', function (Blueprint $table) {
-            $table->uuid('id_carts_222339')->primary();
-            $table->string('kode_222339')->index();
+            $table->ulid('kode_222339')->index()->unique()->primary();
             $table->integer('jumlah_222339');
             $table->double('total_222339');
             $table->string('status_222339');
             $table->string('tanggal_222339');
             $table->timestamps();
-
-
-
         });
     }
 

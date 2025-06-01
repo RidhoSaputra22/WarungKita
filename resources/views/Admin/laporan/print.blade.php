@@ -2,10 +2,10 @@
     <section class="p-10">
         <div class="py-3">
             <h1 class="text-3xl ">Laporan Menu</h1>
-            <h1 class="text-sm pb-3">Tanggal: {{now()->toString()}}</h1>
+            <h1 class="pb-3 text-sm">Tanggal: {{ now()->toString() }}</h1>
         </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <table class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -58,26 +58,25 @@
                 </thead>
                 <tbody>
                     @foreach ($datas as $data)
-
-                    <tr class=" border text-black">
-                        <th scope="row" class="px-6 py-4  ">
-                            {{ $data['nama_222339'] }}
-                        </th>
-                        <td class="px-6 py-4">
-                            {{ $data['harga_222339'] }}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $data['stok_222339'] }}
-                        </td>
-                        <td class="px-6 py-4">
-                            <p class="px-3 py-1 ">
-                                {{ $data->kategori['kategori_222339'] }}
-                            </p>
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $data['created_at'] }}
-                        </td>
-                    </tr>
+                        <tr class="text-black border ">
+                            <th scope="row" class="px-6 py-4 ">
+                                {{ $data['nama_222339'] }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ $data['harga_222339'] }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $data['stok_222339'] }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <p class="px-3 py-1 ">
+                                    {{ $data->kategori['kategori_222339'] }}
+                                </p>
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $data['created_at'] }}
+                            </td>
+                        </tr>
                     @endforeach
 
                 </tbody>

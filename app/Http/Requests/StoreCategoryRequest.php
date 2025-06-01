@@ -23,6 +23,7 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             //
+            'kategori_222339' => 'required',
         ];
     }
 }
