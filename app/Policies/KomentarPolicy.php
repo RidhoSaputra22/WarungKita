@@ -14,6 +14,8 @@ class KomentarPolicy
     public function viewAny(User $user): bool
     {
         //
+        return true;
+
     }
 
     /**
@@ -22,6 +24,8 @@ class KomentarPolicy
     public function view(User $user, Komentar $komentar): bool
     {
         //
+        return true;
+
     }
 
     /**
@@ -30,6 +34,8 @@ class KomentarPolicy
     public function create(User $user): bool
     {
         //
+        return true;
+
     }
 
     /**
@@ -38,6 +44,8 @@ class KomentarPolicy
     public function update(User $user, Komentar $komentar): bool
     {
         //
+        return true;
+
     }
 
     /**
@@ -46,6 +54,8 @@ class KomentarPolicy
     public function delete(User $user, Komentar $komentar): bool
     {
         //
+        return true;
+
     }
 
     /**
@@ -54,6 +64,8 @@ class KomentarPolicy
     public function restore(User $user, Komentar $komentar): bool
     {
         //
+        return true;
+
     }
 
     /**
@@ -62,5 +74,7 @@ class KomentarPolicy
     public function forceDelete(User $user, Komentar $komentar): bool
     {
         //
+        return true;
+
     }
 }

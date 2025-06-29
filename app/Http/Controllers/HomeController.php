@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function __construct()
     {
         if (Auth::check()) {
-            $this->onCart = Cart::with('menu')->where('username_222339', '=', Auth::user()['username_222339'])->where('status_222339', '=', 'belum');
+            $this->onCart = Cart::with('menu')->where('id_user_222339', '=', Auth::user()['id_user_222339'])->where('status_222339', '=', 'belum');
         }
     }
 
@@ -92,9 +92,9 @@ class HomeController extends Controller
     {
         // dd(Auth::check());
 
-        $cart = $this->onCart->where('nama_menu_222339', $id)->get();
+        $cart = $this->onCart->where('id_menu_222339', $id)->get();
         $menu = Menu::find($id);
-        // dd($cart, $menu);
+        // dd($cart);
         if ($cart->isEmpty()) {
             $harga = $menu['harga_222339'] * 1;
             $jumlah = $menu['stok_222339'];
@@ -104,8 +104,9 @@ class HomeController extends Controller
             }
 
             Cart::create([
-                'nama_menu_222339' => $menu['nama_222339'],
-                'username_222339' => Auth::user()['username_222339'],
+                'id_menu_222339' => $menu['id_menu_222339'],
+                'id_user_222339' => Auth::user()['id_user_222339'],
+                'kode_222339' => '',
                 'jumlah_222339' => 1,
                 'status_222339' => 'belum',
                 'total_222339' => $harga,
@@ -127,7 +128,7 @@ class HomeController extends Controller
             if ($jumlah < $qty) {
                 $cart->update([
                     'jumlah_222339' => $jumlah,
-                    'username_222339' => Auth::user()['username_222339'],
+                    'id_user_222339' => Auth::user()['id_user_222339'],
 
                     'total_222339' => $harga,
                 ]);
@@ -147,12 +148,12 @@ class HomeController extends Controller
 
         if (Auth::check()) {
             $komentar = Komentar::with('user', 'menu')
-                ->where('username_222339', '!=', Auth::user()['username_222339'])
-                ->where('nama_menu_222339', $id)
+                ->where('id_user_222339', '!=', Auth::user()['id_user_222339'])
+                ->where('id_menu_222339', $id)
                 ->get();
             $komentarKu = Komentar::with('user', 'menu')
-                ->where('username_222339', Auth::user()['username_222339'])
-                ->where('nama_menu_222339', $id)
+                ->where('id_user_222339', Auth::user()['id_user_222339'])
+                ->where('id_menu_222339', $id)
                 ->get();
         }
         return view('detail', compact('data', 'komentar', 'komentarKu'));
@@ -168,15 +169,14 @@ class HomeController extends Controller
         \Midtrans\Config::$isSanitized = true;
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
-        $datas = $this->onCart->get();
-
+        $datas = $this->onCart;
         $status = \Midtrans\Transaction::status($id)->status_code;
 
-        $isKodeOnCart = Cart::where('kode_222339', $id)->get()->isNotEmpty();
-        $isDriverConfirm = Pesanan::where('kode_222339', $id)->where('konfirmasi_driver_222339', '=', 'selesai')
-            ->get()->isNotEmpty();
-        $isUserConfirm = Pesanan::where('kode_222339', $id)->where('konfirmasi_pelanggan_222339', '=', 'selesai')
-            ->get()->isNotEmpty();
+        $isKodeOnCart = Cart::where('kode_222339', $id)->get()->isEmpty();
+        $isDriverConfirm = Pesanan::where('kode_222339', $id)->where('konfirmasi_driver_222339', '!=', 'selesai')
+            ->get()->isEmpty();
+        $isUserConfirm = Pesanan::where('kode_222339', $id)->where('konfirmasi_pelanggan_222339', '!=', 'selesai')
+            ->get()->isEmpty();
         $pesanan = Pesanan::where('kode_222339', $id);
         // dd($id, $pesanan->get(), $isDriverConfirm, !$isUserConfirm, $isKodeOnCart, $status, $datas);
 
@@ -186,17 +186,16 @@ class HomeController extends Controller
             ]);
         }
 
-        if ($isKodeOnCart && $status == '200' && $datas->isNotEmpty()) {
+        if ($isKodeOnCart && $status == '200') {
 
-            foreach ($datas as $data) {
+            foreach ($datas->get() as $data) {
                 $data->menu->update([
                     'stok_222339' => $data->menu['stok_222339'] - $data['jumlah_222339'],
                 ]);
             }
 
             $driver = User::where('role_222339', 'driver')->inRandomOrder()->first();
-            // dd($datas);
-            $pelanggan = $datas[0]->pelanggan;
+            $pelanggan = $datas->get()[0]->pelanggan;
 
             $datas->update([
                 'status_222339' => 'selesai',
@@ -209,8 +208,8 @@ class HomeController extends Controller
                 "konfirmasi_driver_222339" => "pending",
                 "foto_konfirmasi_222339" => "pending",
                 'status_222339' => 'pending',
-                "driver_222339" => $driver['username_222339'],
-                "user_222339" => $pelanggan['username_222339'],
+                "id_driver_222339" => $driver['id_user_222339'],
+                "id_user_222339" => $pelanggan['id_user_222339'],
                 "kode_222339" => $id,
             ]);
 
@@ -225,7 +224,7 @@ class HomeController extends Controller
     public function riwayat()
     {
 
-        $datas = Cart::where('username_222339', Auth::user()['username_222339'] ?? null)->get();
+        $datas = Cart::where('id_user_222339', Auth::user()['id_user_222339'] ?? null)->get();
 
         return view('riwayat', compact('datas'));
     }

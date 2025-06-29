@@ -3,7 +3,6 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\user;
 use Illuminate\Auth\Access\Response;
 
 class UserPolicy
@@ -14,6 +13,7 @@ class UserPolicy
     public function viewAny(User $user): bool
     {
         //
+        return true;
     }
 
     /**
@@ -22,6 +22,7 @@ class UserPolicy
     public function view(User $user, user $model): bool
     {
         //
+        return true;
     }
 
     /**
@@ -30,6 +31,7 @@ class UserPolicy
     public function create(User $user): bool
     {
         //
+        return true;
     }
 
     /**
@@ -38,6 +40,7 @@ class UserPolicy
     public function update(User $user, user $model): bool
     {
         //
+        return true;
     }
 
     /**
@@ -46,6 +49,7 @@ class UserPolicy
     public function delete(User $user, user $model): bool
     {
         //
+        return true;
     }
 
     /**
@@ -54,6 +58,7 @@ class UserPolicy
     public function restore(User $user, user $model): bool
     {
         //
+        return true;
     }
 
     /**
@@ -62,5 +67,6 @@ class UserPolicy
     public function forceDelete(User $user, user $model): bool
     {
         //
+        return true;
     }
 }

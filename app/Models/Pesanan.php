@@ -19,19 +19,19 @@ class Pesanan extends Model
         "konfirmasi_driver_222339",
         "status_222339",
         "foto_konfirmasi_222339",
-        "driver_222339",
-        "user_222339",
+        "id_driver_222339",
+        "id_user_222339",
         "kode_222339"
     ];
 
     public function driver()
     {
-        return $this->belongsTo(User::class, "driver_222339", "username_222339");
+        return $this->belongsTo(User::class, "id_driver_222339", "id_user_222339");
     }
 
     public function pelanggan()
     {
-        return $this->belongsTo(User::class, "user_222339", "username_222339");
+        return $this->belongsTo(User::class, "id_user_222339", "id_user_222339");
     }
 
     public function cart()

@@ -17,16 +17,17 @@ class KurirController extends Controller
     public function pending(Request $request)
     {
         $driver = Auth::user();
-        $datas = Pesanan::where('driver_222339', $driver['username_222339'])
-                                ->where('konfirmasi_driver_222339', 'pending')
-                                ->latest()->get();
+        $datas = Pesanan::where('id_driver_222339', $driver['id_user_222339'])
+            ->where('konfirmasi_driver_222339', 'pending')
+            ->latest()->get();
         // dd($datas, $driver);
         // dd($datas[0]->cart[0]->pelanggan, $driver);
 
         return view('driver.pending', compact('datas', 'request'));
     }
 
-    public function konfirmasi($id){
+    public function konfirmasi($id)
+    {
         Pesanan::findOrFail($id)->update([
             'konfirmasi_driver_222339' => 'selesai'
         ]);
@@ -37,11 +38,10 @@ class KurirController extends Controller
     public function selesai(Request $request)
     {
         $driver = Auth::user();
-        $datas = Pesanan::where('driver_222339', $driver['username_222339'])
-                                ->where('konfirmasi_driver_222339', 'selesai')
-                                ->latest()->get();
+        $datas = Pesanan::where('id_driver_222339', $driver['id_user_222339'])
+            ->where('konfirmasi_driver_222339', 'selesai')
+            ->latest()->get();
 
         return view('driver.selesai', compact('datas', 'request'));
     }
-
 }

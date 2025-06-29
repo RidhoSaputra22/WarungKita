@@ -32,7 +32,7 @@ Route::get('/menu', [MenuController::class, 'menu']);
 Route::get('/detail/{id}', [HomeController::class, 'detail']);
 
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::get('/AddToCart/{id}', [HomeController::class, 'AddToCart']);
     Route::get('/DelFormCart/{id}', [HomeController::class, 'DelFormCart']);
     Route::get('/DestroyFormCart/{id}', [HomeController::class, 'DestroyFormCart']);
@@ -40,28 +40,13 @@ Route::middleware('auth')->group(function(){
     Route::get('/riwayat', [HomeController::class, 'riwayat']);
     Route::get('/checkout/{id}', [HomeController::class, 'checkout']);
     Route::get('/checkout-status/{id}', [HomeController::class, 'checkoutStatus']);
+
+    Route::resource('komentar', KomentarController::class);
 });
 
-Route::middleware(['admin'])->group(function(){
-    Route::resource('/admin/menu', MenuController::class);
-    Route::resource('/admin/pelanggan', UserController::class);
-    Route::resource('/admin/laporan', LaporanController::class);
-    Route::resource('/admin/kategori', CategoryController::class);
-    Route::resource('/admin/order', OrderController::class);
-    Route::resource('/admin/pesanan', PesananController::class);
-    Route::resource('/admin/komentar', KomentarController::class);
 
-    Route::get('/print/menu', [MenuController::class, 'print']);
-    Route::get('/print/pelanggan', [UserController::class, 'print']);
-    Route::get('/print/laporan', [LaporanController::class, 'print']);
-    Route::get('/print/kategori', [CategoryController::class, 'print']);
-    Route::get('/print/order', [OrderController::class, 'print']);
-    Route::get('/print/pesanan', [PesananController::class, 'print']);
-    Route::get('/print/komentar', [KomentarController::class, 'print']);
 
-});
-
-Route::middleware(['driver'])->group(function(){
+Route::middleware(['driver'])->group(function () {
     Route::get('driver/pending', [KurirController::class, 'pending']);
     Route::get('driver/selesai', [KurirController::class, 'selesai']);
     Route::post('driver/konfirmasi/{id}', [KurirController::class, 'konfirmasi']);
@@ -75,4 +60,3 @@ Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name(
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
 Route::get('signout', [CustomAuthController::class, 'signout'])->name('signout');
-

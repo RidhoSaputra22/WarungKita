@@ -40,11 +40,11 @@
                                     <div class="text-sm font-normal grow md:text-lg">Rp.
                                         {{ number_format($data['total_222339']) }}</div>
                                     <div class="flex">
-                                        <a href="/AddToCart/{{ $data->menu['nama_222339'] }}"
-                                            class="flex items-center justify-center text-sm leading-none text-white bg-red-900 border rounded-sm shadow h-7 aspect-square">&#43</a>
+                                        <a href="/AddToCart/{{ $data->menu['id_menu_222339'] }}"
+                                            class="h-7 aspect-square flex justify-center items-center leading-none text-sm rounded-sm bg-red-900 text-white shadow border">&#43</a>
                                         <span class="px-3">{{ $data['jumlah_222339'] }}</span>
-                                        <a href="/DelFormCart/{{ $data['kode_222339'] }}"
-                                            class="flex items-center justify-center text-sm leading-none text-white bg-red-900 border rounded-sm shadow h-7 aspect-square">&#8722</a>
+                                        <a href="/DelFormCart/{{ $data['id_carts_222339'] }}"
+                                            class="h-7 aspect-square flex justify-center items-center leading-none text-sm rounded-sm bg-red-900 text-white shadow border">&#8722</a>
                                     </div>
                                 </div>
                             </div>

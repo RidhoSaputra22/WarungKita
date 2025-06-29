@@ -26,7 +26,7 @@
                         <p class="text-2xl mt-4">Rp. {{ number_format($data['harga_222339']) }}</p>
                         <p class="text-lg mt-4">Qty. {{ $data['stok_222339'] }}</p>
                         <div class="my-5">
-                            <a href="/AddToCart/{{ $data['nama_222339'] }}">
+                            <a href="/AddToCart/{{ $data['id_menu_222339'] }}">
                                 <div class=" w-fit bg-red-900 text-white px-4 py-2  ">Beli Sekarang</div>
                             </a>
                         </div>
@@ -88,7 +88,7 @@
                                         method="POST">
                                         @csrf
                                         <input type="text" name="menu" id=""
-                                            value="{{ $data['nama_222339'] }}" hidden>
+                                            value="{{ $data['id_menu_222339'] }}" hidden>
                                         <textarea name="komentar" class="text-lg w-full h-auto border-2  shadow px-3 py-1">{{ $data['komentar_222339'] }}</textarea>
                                         <div class="">
                                             <button type="submit"

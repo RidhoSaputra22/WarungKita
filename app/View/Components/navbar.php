@@ -20,7 +20,7 @@ class navbar extends Component
     {
         if (Auth::check()) {
 
-            $this->keranjang = Cart::where('username_222339', '=', Auth::user()['username_222339'])
+            $this->keranjang = Cart::where('id_user_222339', '=', Auth::user()['id_user_222339'])
                 ->where('status_222339', 'belum')
                 ->count();
         }

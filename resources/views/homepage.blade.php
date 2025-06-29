@@ -37,7 +37,7 @@
                 <div class="min-h-96 ">
                     <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 min-h-96 lg:gap-14">
                         @foreach ($datas as $data)
-                            <a href="/detail/{{ $data['nama_222339'] }}" class="">
+                            <a href="/detail/{{ $data['id_menu_222339'] }}" class="">
                                 <div class="  shadow-lg w-full h-[300px] bg-bottom bg-cover bg-no-repeat  rounded flex flex-col justify-end rounded-xl"
                                     style="background-image: url('{{ URL::asset($data['foto_222339']) }}');">
                                     <div class="flex flex-col h-40 p-3 px-6 py-5 bg-white rounded-b rounded-t-xl">

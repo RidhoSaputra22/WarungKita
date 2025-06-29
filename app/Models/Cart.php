@@ -11,12 +11,12 @@ class Cart extends Model
     use HasFactory, HasUlids;
 
     protected $table = "carts_222339";
-    protected $primaryKey = "kode_222339";
+    protected $primaryKey = "id_carts_222339";
 
 
     protected $fillable = [
-        'nama_menu_222339',
-        'username_222339',
+        'id_menu_222339',
+        'id_user_222339',
         'kode_222339',
         'jumlah_222339',
         'total_222339',
@@ -26,10 +26,10 @@ class Cart extends Model
 
     public function menu()
     {
-        return $this->belongsTo(Menu::class, 'nama_menu_222339');
+        return $this->belongsTo(Menu::class, 'id_menu_222339');
     }
     public function pelanggan()
     {
-        return $this->belongsTo(User::class, 'username_222339');
+        return $this->belongsTo(User::class, 'id_user_222339');
     }
 }

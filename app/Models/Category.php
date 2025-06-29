@@ -12,15 +12,16 @@ class Category extends Model
     use HasUlids;
 
     protected $table = "categories_222339";
-    protected $primaryKey = "kategori_222339";
+    protected $primaryKey = "id_kategori_222339";
 
     protected $fillable = [
+        'id_kategori_222339',
         'kategori_222339'
     ];
 
 
     public function menu()
     {
-        return $this->hasMany(Menu::class, 'kategori_222339');
+        return $this->hasMany(Menu::class, 'id_kategori_222339');
     }
 }

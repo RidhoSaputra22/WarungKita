@@ -92,10 +92,6 @@ class CategoryController
     public function update(Request $request, $id)
     {
 
-        $request->validate([
-            'kategori' => 'required|unique:categories_222339,kategori_222339',
-        ]);
-
         Category::findOrFail($id)->update([
             'kategori_222339' => $request['kategori']
         ]);

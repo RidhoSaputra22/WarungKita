@@ -98,7 +98,7 @@ class MenuController
             'nama_222339' => $request['nama'],
             'harga_222339' => $request['harga'],
             'stok_222339' => $request['stok'],
-            'kategori_222339' => $request['kategori'],
+            'id_kategori_222339' => $request['kategori'],
             'foto_222339' => 'image/menu/' . $fileName,
 
         ]);
